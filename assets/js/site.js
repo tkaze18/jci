@@ -105,6 +105,47 @@
       : "all", false);
   }
 
+  /* ---- Film: click the poster to play ----------------------------------
+   * The markup ships `controls` so that with JavaScript off the <video> is
+   * a working native player. Here we take those controls away, put the
+   * poster overlay in their place, and hand them back the moment the film
+   * starts — otherwise the native control bar paints on top of the overlay.
+   */
+  document.querySelectorAll("[data-film]").forEach(function (figure) {
+    var video = figure.querySelector("video");
+    var button = figure.querySelector("[data-film-play]");
+    if (!video || !button) return;
+
+    video.removeAttribute("controls");
+
+    var reveal = function () {
+      figure.setAttribute("data-playing", "");
+      video.setAttribute("controls", "");
+    };
+    var restore = function () {
+      figure.removeAttribute("data-playing");
+      video.removeAttribute("controls");
+    };
+
+    button.addEventListener("click", function () {
+      reveal();
+      var started = video.play();
+      if (started && typeof started.catch === "function") {
+        // Playback with sound can be refused, and the file may simply fail
+        // to decode. Put the poster back rather than leaving a dead frame.
+        started.catch(restore);
+      }
+      video.focus({ preventScroll: true });
+    });
+
+    // Keep the overlay in step with the native controls: gone while the film
+    // is running or paused part-way, back again once it has finished so it
+    // can be replayed.
+    video.addEventListener("play", reveal);
+    video.addEventListener("ended", restore);
+    video.addEventListener("error", restore);
+  });
+
   /* ---- Current year in the footer --------------------------------------- */
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

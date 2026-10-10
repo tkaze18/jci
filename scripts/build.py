@@ -129,6 +129,42 @@ def project_card(project: dict, root: str, data: dict, *, card=True,
         </a>"""
 
 
+def film_block(data: dict, root: str) -> str:
+    """The practice film.
+
+    The <video> carries `controls` and `preload="none"` in the markup, so with
+    JavaScript off it is a working native player that costs nothing until
+    someone presses play. With JavaScript, an overlay covers it until the
+    first click — see the film handler in site.js.
+    """
+    film = data["film"]
+    sources = "\n".join(
+        f'            <source src="{root}{s["src"]}" type="{s["type"]}">'
+        for s in film["sources"]
+    )
+    return f"""  <section class="section section--flush-top">
+    <div class="shell">
+{sec_head(f'{film["eyebrow"]} · {film["durationLabel"]}', esc(film["heading"]))}
+      <p class="t-lede" style="margin:calc(var(--s-md) * -1) 0 var(--s-md)" data-reveal>{esc(film["standfirst"])}</p>
+      <figure class="film" data-film data-reveal>
+        <video class="film__video" controls preload="none" playsinline
+               poster="{root}assets/video/{film["poster"]}.webp"
+               aria-label="{esc(film["name"])}">
+{sources}
+          <p class="t-body">Your browser cannot play this video.
+            <a href="{root}{film["sources"][-1]["src"]}">Download the film</a> instead.</p>
+        </video>
+        <button class="film__play" type="button" data-film-play
+                aria-label="Play the {esc(film["name"])}, {esc(film["durationLabel"])}">
+          <span class="film__play-icon" aria-hidden="true"></span>
+          <span class="film__play-label t-label">Play film <span aria-hidden="true">·</span> {esc(film["durationLabel"])}</span>
+        </button>
+      </figure>
+    </div>
+  </section>
+"""
+
+
 def cta(root: str) -> str:
     return f"""  <section class="cta">
     <div class="shell">
@@ -198,7 +234,8 @@ def page_home(data: dict, root: str) -> str:
     </div>
   </section>
 
-  <section class="section">
+{film_block(data, root)}
+  <section class="section section--flush-top">
     <div class="shell">
       <div class="split">
         <div data-reveal>
@@ -786,6 +823,24 @@ def page_404(root: str) -> str:
 # ---------------------------------------------------------------------------
 # Build
 # ---------------------------------------------------------------------------
+def video_jsonld(data: dict) -> str:
+    """Schema.org VideoObject for the practice film, emitted on the home page."""
+    film, site = data["film"], data["site"]
+    payload = {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": film["name"],
+        "description": film["standfirst"],
+        "thumbnailUrl": f'{site["url"]}/assets/video/{film["poster"]}.webp',
+        "contentUrl": f'{site["url"]}/{film["sources"][-1]["src"]}',
+        "duration": film["durationISO"],
+        "publisher": {"@type": "Organization", "name": site["name"], "url": site["url"]},
+    }
+    return ('<script type="application/ld+json">'
+            + json.dumps(payload, ensure_ascii=False)
+            + "</script>")
+
+
 def write(path: str, text: str) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
@@ -898,7 +953,7 @@ def main() -> int:
                 .replace("{{root}}", root)
                 .replace("{{nav}}", nav_html(data, root, nav_key))
                 .replace("{{body}}", body)
-                .replace("{{head}}", "")
+                .replace("{{head}}", video_jsonld(data) if path == "index.html" else "")
                 .replace("{{scripts}}", ""))
         write(os.path.join(out, path), html)
         if not path.endswith("404.html"):

@@ -22,6 +22,7 @@ and images that any static host will serve.
 | `assets/css/site.css` | Components, built only from those tokens. |
 | `assets/js/site.js` | Progressive enhancement — header state, menu, reveals, work filter. |
 | `assets/img/projects/` | Project photography, two widths each (`-card` 900px, full 1800px). |
+| `assets/video/` | The practice film (WebM + MP4) and its poster frame. |
 | `templates/base.html` | The page shell: head, header, footer. |
 | `scripts/build.py` | Renders `content/site.json` into `dist/`. |
 | `scripts/build_assets.py` | Re-derives the images from the source brochure PDFs. |
@@ -40,6 +41,38 @@ never hard-code a value, so the tokens are the only place to change.
 
 **Structure** — page composition lives in `scripts/build.py`, one function per
 page type (`page_home`, `page_project`, `page_sector`, …).
+
+## The film
+
+`assets/video/jci-film.*` is the practice's 2m15s brand film, supplied as a
+15.7 MB 848×478 WhatsApp export and re-encoded for the web:
+
+| | | |
+| --- | --- | --- |
+| `jci-film.webm` | VP9 / Opus, CRF 41 | 6.3 MB — offered first |
+| `jci-film.mp4` | H.264 high / AAC, CRF 28, faststart | 7.1 MB — universal fallback |
+| `jci-film-poster.webp` | frame at 108s | 96 KB |
+
+Both encodes measure 35.9 dB PSNR against each other and are visually
+indistinguishable from the source. The MP4 alone would cover Safari, iOS,
+Edge and every phone; the WebM exists because Chromium builds shipped
+without H.264 (common on Linux) cannot play the MP4 at all, and it happens
+to be the smaller file.
+
+It sits on the home page as a click-to-play block, not a hero background:
+the film carries its own burnt-in titles, which would collide with the hero
+headline, and at 848×478 it would be softer full-bleed than the still it
+would replace. `preload="none"` means it costs nothing until someone presses
+play — which matters for an audience largely on mobile data.
+
+To re-encode after a new master lands:
+
+```
+ffmpeg -i master.mp4 -c:v libvpx-vp9 -crf 41 -b:v 0 -row-mt 1 \
+  -pix_fmt yuv420p -c:a libopus -b:a 96k assets/video/jci-film.webm
+ffmpeg -i master.mp4 -c:v libx264 -profile:v high -crf 28 -preset slow \
+  -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 96k assets/video/jci-film.mp4
+```
 
 ## Content provenance
 

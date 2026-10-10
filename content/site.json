@@ -47,6 +47,26 @@
     "quote": "The building where we live, work, learn and relax profoundly impacts our health, well-being, and productivity.",
     "statement": "We are not just designers. We are innovators, crafts people and thinkers."
   },
+  "film": {
+    "eyebrow": "Film",
+    "heading": "We have always been people of curiosity.",
+    "standfirst": "Two minutes fifteen on how the practice works — the commercial and hospitality design, the operations behind it, and the people who do it.",
+    "durationLabel": "2:15",
+    "durationISO": "PT2M15S",
+    "poster": "jci-film-poster",
+    "posterAlt": "Still from the James Cubitt Interiors film: a bar and lounge with warm pendant lighting and a city view",
+    "name": "James Cubitt Interiors — practice film",
+    "sources": [
+      {
+        "src": "assets/video/jci-film.webm",
+        "type": "video/webm"
+      },
+      {
+        "src": "assets/video/jci-film.mp4",
+        "type": "video/mp4"
+      }
+    ]
+  },
   "stats": [
     {
       "value": "1947",

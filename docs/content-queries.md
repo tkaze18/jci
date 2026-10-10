@@ -97,7 +97,16 @@ from the hospitality brochure, and the combined scope.
 Confirm the project count before launch — a precise number reads better than
 `50+` if you have one.
 
-### 11. Photography
+### 11. Captions for the film
+
+The practice film has an audio track and shows its script as burnt-in title
+cards ("We have always been / People of curiosity / … / Improving Wellbeing
+through interior design"), so the narrative is already legible with the sound
+off. If there is spoken narration beyond those cards, the film should carry a
+caption track — add a `.vtt` file and a `<track kind="captions">` to the
+`<video>` built in `film_block()` in `scripts/build.py`.
+
+### 12. Photography
 
 All 90 images were extracted from the brochure PDFs, where they are embedded
 at 800px wide. They are upscaled for full-bleed use and are soft on large
