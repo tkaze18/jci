@@ -1,0 +1,1462 @@
+{
+  "site": {
+    "name": "James Cubitt Interiors",
+    "short": "JCI",
+    "tagline": "we design, you experience",
+    "promise": "Improving well-being through interior design",
+    "description": "James Cubitt Interiors is a commercial interior architecture practice working across West Africa — workplace, hospitality, retail and residential interiors from strategy through to fit-out.",
+    "url": "https://www.jamescubittinteriors.com",
+    "email": "info@jamescubittinteriors.com",
+    "phone": "+234 704 577 1218",
+    "phoneHref": "+2347045771218",
+    "copyrightFrom": 2025
+  },
+  "nav": [
+    {
+      "label": "Work",
+      "href": "/work/"
+    },
+    {
+      "label": "Expertise",
+      "href": "/expertise/"
+    },
+    {
+      "label": "Services",
+      "href": "/services/"
+    },
+    {
+      "label": "Studio",
+      "href": "/studio/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact/"
+    }
+  ],
+  "home": {
+    "heroEyebrow": "Commercial interior architects",
+    "heroHeadline": "We design,<br>you experience.",
+    "heroStandfirst": "Sixty years of West African practice, drawn from a London studio founded in 1947. We shape workplaces, hotels, stores and homes that people move through well.",
+    "heroImage": "guinness-hq-01",
+    "heroImageAlt": "Dark marble bar and lounge overlooking water at the Guinness head office in Lagos",
+    "missionHeadline": "Our environment is changing how we live.",
+    "missionBody": [
+      "We are a team of creative, innovative and committed professionals devoted to redefining spatial experience through interior architecture and design — interior architects, designers and strategists.",
+      "We believe that intelligently crafted spaces create memories and experiences, and inspire people. Inspiration in turn births innovation, and then value."
+    ],
+    "quote": "The building where we live, work, learn and relax profoundly impacts our health, well-being, and productivity.",
+    "statement": "We are not just designers. We are innovators, crafts people and thinkers."
+  },
+  "stats": [
+    {
+      "value": "1947",
+      "label": "Founded in London"
+    },
+    {
+      "value": "60+",
+      "label": "Years in West Africa"
+    },
+    {
+      "value": "50+",
+      "label": "Interiors delivered"
+    },
+    {
+      "value": "5",
+      "label": "Countries"
+    }
+  ],
+  "sectors": [
+    {
+      "slug": "workplace",
+      "name": "Workplace",
+      "lede": "Head offices, banking halls and campuses for organisations that need their space to carry strategy as well as people.",
+      "body": [
+        "Most of what we build is workplace. We have delivered head offices for banks, telecoms operators, energy companies and global brands across Nigeria, Ghana and Côte d'Ivoire — from a single floor restack to a twenty-four month headquarters programme.",
+        "The work usually starts before the drawings do. Space assessment, space programming and space standard advisory tell us what an organisation actually needs; design development, fit-out and FFE turn that into a building people can use."
+      ],
+      "image": "mtn-cote-divoire-01",
+      "imageAlt": "Planted atrium workspace with people walking through, MTN CI Place, Abidjan",
+      "imageCredit": "MTN CI Place, Abidjan"
+    },
+    {
+      "slug": "hospitality",
+      "name": "Hospitality",
+      "lede": "Hotels, lounges, clubs and serviced apartments where the interior is the product the guest is buying.",
+      "body": [
+        "Hospitality interiors have to work twice: once as a brand and once as a building that is occupied around the clock. We design for the guest journey — arrival, stay, wind-down — and for the housekeeping and service routes that keep it running.",
+        "Recent work includes Hotel Takum, the Metropolitan Club, Park Inn, Gabfol Airport lounges and the Onomo Hotel within the Afreximbank African Trade Centre in Abuja."
+      ],
+      "image": "gabfol-airport-01",
+      "imageAlt": "Curved bar under a warm circular ceiling feature in the Gabfol airport lounge",
+      "imageCredit": "Gabfol Airport lounge, Lagos"
+    },
+    {
+      "slug": "retail",
+      "name": "Retail",
+      "lede": "Flagship stores and experience centres built around a single, repeatable customer moment.",
+      "body": [
+        "Retail is where brand strategy, wayfinding and signage stop being documents and start being floor plans. We design stores that read instantly from the street and hold up to the traffic they are built for.",
+        "Our retail work includes the Airtel Experience Centre in Lagos and flagship store programmes for NTel."
+      ],
+      "image": "airtel-store-01",
+      "imageAlt": "Red-accented Airtel experience centre with demonstration counters and a techie bar",
+      "imageCredit": "Airtel Experience Centre, Lagos"
+    },
+    {
+      "slug": "residential",
+      "name": "Residential",
+      "lede": "Private homes and residential series where the brief is personal and the detailing has to be exact.",
+      "body": [
+        "Residential work is a small, deliberate part of the practice. It is where our detailing is tested hardest, because the client lives inside the result.",
+        "Projects include the Wesley Residential Series in Lagos, Ruxton, Party House and Probyn Haven."
+      ],
+      "image": "park-inn-01",
+      "imageAlt": "Calm bedroom with warm timber headboard wall and layered lighting",
+      "imageCredit": "Guest room, Park Inn, Lagos",
+      "note": "We hold no published photography of the residential work. The projects below are listed in the practice's capability statement; the photograph above is a Park Inn guest room, shown for the character of the detailing rather than as a residential project.",
+      "indexType": "Residential"
+    }
+  ],
+  "services": [
+    {
+      "slug": "design",
+      "name": "Design",
+      "detail": "Research, programming and conceptualisation, design development.",
+      "body": "The core service. We research how an organisation works, programme the space it needs, and develop that into a design that can be built."
+    },
+    {
+      "slug": "workplace-strategy",
+      "name": "Workplace Strategy",
+      "detail": "Space assessment, space programming, space standard advisory.",
+      "body": "Before anyone draws a plan, we establish what the space has to do — how many people, what kinds of work, which standards the organisation wants to hold itself to."
+    },
+    {
+      "slug": "wellness-assessment",
+      "name": "Wellness Assessment & Correction",
+      "detail": "Assessment against wellness and sustainability metrics, with corrections.",
+      "body": "We assess the current and future interior environment to ensure its alignment with best practices and industry metrics for wellness and sustainability, identifying where it falls short and proffering appropriate corrections."
+    },
+    {
+      "slug": "experiential",
+      "name": "Experiential Projects",
+      "detail": "Brand strategy, wayfinding, signage, brand identity guidelines.",
+      "body": "Where the interior has to speak. We translate a brand into the way a building is navigated, named and signed."
+    },
+    {
+      "slug": "design-intelligence",
+      "name": "Design Intelligence",
+      "detail": "3D visualisation, virtual reality.",
+      "body": "Clients sign off on space, not drawings. We model and walk the scheme before it is committed."
+    },
+    {
+      "slug": "design-management",
+      "name": "Design Management",
+      "detail": "Project monitoring and reporting.",
+      "body": "Holding the design intent through procurement and construction, and reporting honestly on where the project actually is."
+    },
+    {
+      "slug": "ffe",
+      "name": "FFE",
+      "detail": "Sourcing, procurement, installation.",
+      "body": "Furniture, fittings and equipment — specified, sourced, landed and installed. On most of our projects this is the difference between a design and a finished room."
+    },
+    {
+      "slug": "lighting",
+      "name": "Lighting Design",
+      "detail": "Scheme, specification and control.",
+      "body": "Lighting carries more of the atmosphere of an interior than any other system, and is the easiest thing to get wrong late."
+    }
+  ],
+  "values": [
+    {
+      "name": "Wellness",
+      "body": "The building where we live, work, learn and relax profoundly impacts our health, well-being and productivity."
+    },
+    {
+      "name": "Innovation",
+      "body": "Intelligently crafted spaces create memories and experiences, and inspire people. Inspiration in turn births innovation, and then value."
+    },
+    {
+      "name": "Commitment",
+      "body": "We are committed as a team to improving the connection between human interface, collaboration and spatial experience."
+    },
+    {
+      "name": "Empathy",
+      "body": "A good design solution should hold significance for its users. We design for the people who will occupy the result."
+    }
+  ],
+  "why": [
+    "We are committed as a team to improve the connection between human interface, collaboration and spatial experience.",
+    "We believe that intelligently crafted spaces create memories, experiences and inspire people. Inspiration in turn births innovation and then value.",
+    "We ensure that our interior design solutions are of the highest quality, with careful attention to refined details, to ensure intricately crafted and functionally effective spaces."
+  ],
+  "about": [
+    "We are a team of creative, innovative and committed professionals devoted to redefining spatial experiences through interior architecture and design. Our team of professionals comprises interior architects, designers and strategists.",
+    "With a decade in practice, JCI leverages the James Cubitt brand and its affiliates, boasting over 60 years of West African and 180 years of global design experience. This connection keeps us immersed in profound insights across the built environment industry, encompassing ongoing conversations, innovations, design trends and technology applications on both international and local fronts.",
+    "With our collective experience in the industry, we have navigated various design challenges through our projects. This extensive background empowers us to prioritise meticulous and effective design practices, solutions and products.",
+    "Informed by our industry expertise, our ethos revolves around the belief that a good design solution should hold significance for its users. With this principle at the core of our service, JCI consistently strives to craft spaces that foster movement, offer memorable journeys, and uphold respect for both users and the environment."
+  ],
+  "pullQuote": "We strive to deliver a service defined by excellence — reflected both in the quality of our buildings and in how we meet our clients' needs — always with a focus on high standards and timeless elegance.",
+  "footprint": {
+    "operating": [
+      "Nigeria",
+      "Ghana",
+      "Zimbabwe",
+      "Senegal",
+      "Côte d'Ivoire"
+    ],
+    "network": [
+      "London",
+      "Houston",
+      "Guangzhou",
+      "Doha",
+      "Dubai",
+      "Dakar",
+      "Abidjan",
+      "Lagos",
+      "Accra",
+      "Yaoundé",
+      "Harare",
+      "Brisbane"
+    ]
+  },
+  "timeline": [
+    {
+      "year": "1947",
+      "title": "James Cubitt is founded",
+      "body": "Practice established in London by James William Archibald Cubitt with Fello Atkinson, Stefan Buzas and Dick Maltland."
+    },
+    {
+      "year": "1950",
+      "title": "First footprint in Africa",
+      "body": "JCA in West Africa was set up by the London practice in Ghana."
+    },
+    {
+      "year": "1958",
+      "title": "James Cubitt in Lagos",
+      "body": "Lagos office established by John Baker as a subsidiary of JCP London; Dick Maltland retired from the practice."
+    },
+    {
+      "year": "1968",
+      "title": "New partners",
+      "body": "Alan Craig and John Baker become partners of the firm. Zbyszek Plocki joined JCP as a partner in Nigeria."
+    },
+    {
+      "year": "1985",
+      "title": "Shaping the Lagos cityscape",
+      "body": "Chellarams Tower, now known as WEMA Tower, was completed."
+    },
+    {
+      "year": "1988",
+      "title": "New direction",
+      "body": "Alan Davies becomes Director of the James Cubitt Nigerian offices with Chief Essien Oku."
+    },
+    {
+      "year": "1991",
+      "title": "Expansion",
+      "body": "Significant expansion starts in the Middle East; Abu Dhabi and Dubai offices were established."
+    },
+    {
+      "year": "2004",
+      "title": "Civic Centre",
+      "body": "James Cubitt Architects was commissioned to design the Civic Centre, Lagos."
+    },
+    {
+      "year": "2010",
+      "title": "JCI is established",
+      "body": "James Cubitt Interiors and James Cubitt Developments were registered as independent companies."
+    },
+    {
+      "year": "2014",
+      "title": "Coca-Cola",
+      "body": "James Cubitt Interiors completed the interior design and fitting of the Coca-Cola head office."
+    },
+    {
+      "year": "2015",
+      "title": "MTN Ghana HQ",
+      "body": "The new head office for MTN House Ghana was completed."
+    },
+    {
+      "year": "2017",
+      "title": "First in Eko Atlantic",
+      "body": "The first ever commercial tower in Eko Atlantic City was designed, fitted and handed over to the client."
+    },
+    {
+      "year": "2018",
+      "title": "IFC completed",
+      "body": "IFC office interior design and fit-out was completed."
+    },
+    {
+      "year": "2019",
+      "title": "Access Bank HQ",
+      "body": "The new headquarters for the newly merged banks was completed and handed over to client."
+    },
+    {
+      "year": "2025",
+      "title": "Afreximbank",
+      "body": "The Afreximbank African Trade Centre (AATC) in Abuja stands as a bold testament to contemporary African architecture."
+    }
+  ],
+  "people": [
+    {
+      "name": "Jacqueline Aki",
+      "role": "Managing Director",
+      "email": "j.aki@jamescubittinteriors.com"
+    },
+    {
+      "name": "Femi Sotubo",
+      "role": "Project Manager",
+      "email": "f.sotubo@jamescubittinteriors.com"
+    },
+    {
+      "name": "Ebere Omoike",
+      "role": "Team Lead",
+      "email": null
+    }
+  ],
+  "clients": [
+    "Access Bank",
+    "Afreximbank",
+    "Agence Française de Développement",
+    "Airtel",
+    "Boston Consulting Group",
+    "British Airways",
+    "Clickatell",
+    "Coca-Cola",
+    "Continental Reinsurance",
+    "Dangote",
+    "Diageo",
+    "Ecobank",
+    "Ericsson",
+    "First E&P",
+    "Ford Foundation",
+    "Guinness",
+    "Huawei",
+    "IFC",
+    "IFF",
+    "Interswitch",
+    "J.P. Morgan",
+    "MTN",
+    "Nestlé",
+    "Nigeria LNG",
+    "Nigerian Bottling Company",
+    "NMRC",
+    "Novartis",
+    "NTel",
+    "Paramount Pictures",
+    "Pfizer",
+    "Promasidor",
+    "Reckitt",
+    "Sony Music",
+    "Stanbic IBTC",
+    "Sterling Bank",
+    "Unilever"
+  ],
+  "projects": [
+    {
+      "slug": "afreximbank-hq",
+      "name": "Afreximbank HQ",
+      "client": "Afreximbank",
+      "sector": "workplace",
+      "alsoIn": [
+        "hospitality"
+      ],
+      "city": "Abuja",
+      "country": "Nigeria",
+      "start": "2021",
+      "finish": "Present",
+      "services": [
+        "Design Consultancy"
+      ],
+      "tagline": "Trade Centre — Bold Legacy",
+      "summary": "A headquarters for a pan-African institution, designed as both corporate office and hospitality environment.",
+      "body": [
+        "One of our recent landmark projects, the Afreximbank Headquarters embodies the spirit of a progressive Africa — rooted in culture, driven by purpose, and designed for global impact.",
+        "Our design celebrates the institution's core values through a thoughtful blend of geometry, pattern and elegance. Inspired by African artistry and architectural rhythm, the spatial language reflects both strength and unity — bold yet refined.",
+        "Balancing its function as both a corporate office and a hospitality space, the HQ is designed to be agile, inspiring and human-centered. Formal workspaces merge effortlessly with warm, inviting areas for guests, partners and dignitaries — creating an ecosystem that nurtures connection, excellence and collaboration.",
+        "Through thoughtful wayfinding, we crafted intuitive navigation systems that prioritise user experience, ensuring visitors and staff can move seamlessly through the complex environment.",
+        "Colour played a pivotal role. Green, symbolising growth and renewal, anchors the design. It is complemented by tones of gold for prestige, black for resilience, and deep earthy hues that reflect richness and stability. These colours aren't just aesthetic — they tell the story of a continent on the rise. Every element, from materiality to spatial planning, is a testament to Afreximbank's vision: empowering Africa through design that speaks its language."
+      ],
+      "images": [
+        "afreximbank-hq-01",
+        "afreximbank-hq-02",
+        "afreximbank-hq-03",
+        "afreximbank-hq-04",
+        "afreximbank-hq-05"
+      ],
+      "imageAlts": [
+        "Double-height atrium lobby with curved seating and a sculptural reception",
+        "Lobby lounge with orange seating set against a living green wall",
+        "Warm, softly lit circulation corridor leading to lift lobbies",
+        "Dining room with timber screening and layered pendant lighting",
+        "Meeting room with integrated screen and patterned feature wall"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "hotel-takum",
+      "name": "Hotel Takum",
+      "client": "Hotel Takum",
+      "sector": "hospitality",
+      "city": "Taraba",
+      "country": "Nigeria",
+      "start": "2025",
+      "finish": "Present",
+      "services": [
+        "Design Consultancy"
+      ],
+      "tagline": "Rooted Serenity",
+      "summary": "A hospitality serviced apartment that invites guests into a curated experience of rooted serenity.",
+      "body": [
+        "Hotel Takum, a hospitality serviced apartment, offers more than just a place to stay — it invites guests into a curated experience of rooted serenity.",
+        "Our design approach draws from the calming essence of the Mediterranean while celebrating cultural depth and wellness. Every space is crafted with the user in mind — blending soft textures, earthy tones and locally inspired elements to evoke warmth, ease and belonging.",
+        "With wellness at its core, the material palette and spatial rhythm encourage relaxation without compromising functionality. From sunlit lounges to tranquil suites, Hotel Takum reflects the brand's commitment to comfort, culture and calm — a true retreat in the heart of the city."
+      ],
+      "images": [
+        "hotel-takum-01",
+        "hotel-takum-04",
+        "hotel-takum-02",
+        "hotel-takum-03",
+        "hotel-takum-05"
+      ],
+      "imageAlts": [
+        "Hotel reception with sculptural pendant cluster and a soft, sunlit lobby",
+        "Restaurant under a ceiling of woven rattan discs, with terrazzo flooring",
+        "Lounge with a bold patterned mural and rattan pendant lighting",
+        "Seating area with teal banquettes and curved timber detailing",
+        "Guest suite with a woven headboard panel and warm, earthy finishes"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "diageo-spirit",
+      "name": "Diageo Spirit",
+      "client": "Diageo",
+      "sector": "hospitality",
+      "alsoIn": [
+        "workplace"
+      ],
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2025",
+      "finish": "Present",
+      "services": [
+        "Design",
+        "Fit-Out"
+      ],
+      "tagline": "Refined Heritage",
+      "summary": "A workplace built around a brand story, where heritage meets functionality.",
+      "body": [
+        "Inspired by Diageo's legacy, our design merges tradition with innovation — using natural textures, bold hues and meaningful materials that reflect culture and craftsmanship. Each space tells a brand story of how heritage meets functionality.",
+        "The design concept represents bold choices and progressive design, connecting the users of the space in harmony.",
+        "Rich tones, rattan, wooden textures and locally inspired patterns echo legacy, while high-performance materials ensure timeless functionality and sustainability. Every element is thoughtfully composed to elevate the brand narrative — transforming space into an experience that lingers."
+      ],
+      "images": [
+        "diageo-spirit-01",
+        "diageo-spirit-03",
+        "diageo-spirit-02"
+      ],
+      "imageAlts": [
+        "Bar and lounge beneath a dark coffered ceiling with warm pendant lighting",
+        "Open workspace with timber-lined walls and a daylit perimeter",
+        "Long communal table under a linear ceiling feature"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "gabfol-airport",
+      "name": "Gabfol Airport",
+      "client": "Gabfol",
+      "sector": "hospitality",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2025",
+      "finish": "Present",
+      "services": [
+        "Design Consultancy"
+      ],
+      "tagline": "Calm Sophistication",
+      "summary": "An airport lounge for the modern business traveller — understated luxury, earthy tones, refined materials.",
+      "body": [
+        "Designed for the modern business traveller, Gabfol Airport embodies understated luxury through earthy tones, neutral palettes and refined materials. The ambience is calm yet elevated — creating a welcoming atmosphere that blends functionality with elegance.",
+        "We incorporated nature through greenery, open and breathable layouts, to enhance the experience without compromising durability.",
+        "Every detail was selected to prioritise user comfort, ease of navigation, and the quiet sophistication that defines premium travel at Gabfol."
+      ],
+      "images": [
+        "gabfol-airport-01",
+        "gabfol-airport-02",
+        "gabfol-airport-03",
+        "gabfol-airport-04"
+      ],
+      "imageAlts": [
+        "Curved bar beneath a warm circular ceiling feature",
+        "Lounge seating with planting and a long bar counter",
+        "Daylit lounge with arched timber screening and planting",
+        "Dining area with banquette seating and a glazed façade"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "metropolitan-club",
+      "name": "Metropolitan Club",
+      "client": "Metclub",
+      "sector": "hospitality",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2025",
+      "finish": "Present",
+      "services": [
+        "Design Consultancy"
+      ],
+      "tagline": "Polished Simplicity",
+      "summary": "A members' club where heritage meets hospitality, in a calm and neutral register.",
+      "body": [
+        "The Metropolitan Club in Lagos reflects a quiet sophistication rooted in tradition and elevated by refined design choices. The interiors speak in a calm, neutral palette — whites, greys and warm lighting — offering a serene backdrop for comfort and conversation.",
+        "Carefully selected furniture pieces combine elegance with deep functionality, while ambient lighting is curated to foster warmth and relaxation. Art and sculptural elements punctuate the space, telling stories of culture and taste.",
+        "The strategic use of greenery introduces a breath of freshness, balancing formality with life. Every detail, from artwork placement to spatial flow, speaks of intentionality — creating an atmosphere where heritage meets hospitality."
+      ],
+      "images": [
+        "metropolitan-club-01",
+        "metropolitan-club-02",
+        "metropolitan-club-03"
+      ],
+      "imageAlts": [
+        "Dining room with deep navy walls and a run of timber tables",
+        "Club lounge with layered seating, planting and sculptural lighting",
+        "Banquet hall laid for a long formal dinner"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "park-inn",
+      "name": "Park Inn",
+      "client": "Skyline",
+      "sector": "hospitality",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2025",
+      "finish": "Present",
+      "services": [
+        "Design Consultancy"
+      ],
+      "tagline": "Prestige Journey",
+      "summary": "A guest room concept built on accessible quality and the vibrant spirit of purposeful travel.",
+      "body": [
+        "At Park Inn, the Dulux Room concept is a celebration of modern comfort, elevated simplicity, and the vibrant spirit of purposeful travel. Our design narrative draws from the brand's ethos — accessible quality, vibrant hospitality, and the promise of a consistently uplifting stay.",
+        "We curated a palette using Dulux's signature tones: soft charcoals, serene whites, and energising accents of teal and ochre. These hues breathe life into each room, delivering a visual experience that is both calming and revitalising.",
+        "The spatial language is clean and intuitive — highlighting natural light, fluid lines and smart detailing that enhances both function and form. From check-in to wind-down, the guest journey in a room is designed to feel fresh, personal and unmistakably Park Inn."
+      ],
+      "images": [
+        "park-inn-01",
+        "park-inn-03",
+        "park-inn-02"
+      ],
+      "imageAlts": [
+        "Guest room with a timber headboard wall, lounge chair and warm lighting",
+        "Guest room with a wide artwork above the bed and a work corner",
+        "Guest room detail with a curved lounge chair beside the bed"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "iff",
+      "name": "IFF",
+      "client": "IFF",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "venue": "Wings Tower",
+      "start": "2020",
+      "finish": "2020",
+      "services": [
+        "Design Consultancy",
+        "Sourcing",
+        "Procurement"
+      ],
+      "tagline": "Serene Functionality",
+      "summary": "A minimalist office where a green wall does the work of bringing nature indoors.",
+      "body": [
+        "Our design for IFF embraces minimalist principles — clean lines, open spaces and a restrained palette — accentuated thoughtfully by the brand's signature colour to create a cohesive and sophisticated environment.",
+        "A striking green wall introduces nature indoors, reinforcing wellness and improving air quality within the office. This connection to greenery supports employee health and productivity, bridging the gap between workspace and well-being.",
+        "At IFF we have crafted an office space that not only reflects the brand's identity but also promotes wellness, hospitality-inspired comfort and responsible design."
+      ],
+      "images": [
+        "iff-01",
+        "iff-02",
+        "iff-office-01",
+        "iff-office-02"
+      ],
+      "imageAlts": [
+        "Boardroom facing a full-height moss wall with soft lounge seating",
+        "Breakout kitchen with timber joinery and a high counter",
+        "Open-plan desking on deep blue carpet",
+        "Glazed meeting rooms along a bright open-plan floor"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "aatc-onomo",
+      "name": "AATC + Onomo Hotel",
+      "client": "Afreximbank",
+      "sector": "hospitality",
+      "city": "Abuja",
+      "country": "Nigeria",
+      "start": "2022",
+      "finish": null,
+      "services": [
+        "Interior Design Services"
+      ],
+      "summary": "The hotel and public rooms within the Afreximbank African Trade Centre in Abuja.",
+      "images": [
+        "aatc-onomo-01",
+        "aatc-onomo-02",
+        "aatc-onomo-03"
+      ],
+      "imageAlts": [
+        "Hotel restaurant with woven pendant shades and warm banquette seating",
+        "Hotel lobby lounge with deep sofas and timber screening",
+        "Corridor with framed portraiture and recessed lighting"
+      ]
+    },
+    {
+      "slug": "guinness-hq",
+      "name": "Guinness Head Office",
+      "client": "Guinness",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2019",
+      "finish": "2023",
+      "services": [
+        "Interior Design Services",
+        "Sourcing",
+        "Procurement"
+      ],
+      "summary": "A four-year remodelling programme for the Guinness head office in Lagos.",
+      "images": [
+        "guinness-hq-01",
+        "guinness-hq-02",
+        "guinness-hq-03"
+      ],
+      "imageAlts": [
+        "Dark marble bar and lounge with a long glazed wall over water",
+        "Collaboration zone with yellow and green glazed meeting rooms",
+        "Library-style breakout with open shelving and a green floor"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "mtn-accra-hq",
+      "name": "MTN Head Office, Accra",
+      "client": "MTN",
+      "sector": "workplace",
+      "city": "Accra",
+      "country": "Ghana",
+      "start": "2014",
+      "finish": "2016",
+      "durationMonths": 24,
+      "services": [
+        "Interior Design Services",
+        "Sourcing",
+        "Procurement"
+      ],
+      "summary": "A twenty-four month headquarters programme for MTN House, Ghana.",
+      "images": [
+        "mtn-accra-hq-01",
+        "mtn-accra-hq-02",
+        "mtn-accra-hq-03",
+        "mtn-accra-hq-04"
+      ],
+      "imageAlts": [
+        "Entrance hall with a sweeping yellow ceiling feature",
+        "Staff restaurant with coloured ceiling discs and banquette seating",
+        "Breakout booth in MTN yellow and teal",
+        "Auditorium with tiered seating and acoustic wall panelling"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "access-bank-hq",
+      "name": "Diamond / Access Bank HQ",
+      "client": "Access Bank",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2019",
+      "finish": null,
+      "services": [
+        "Interior Design Services",
+        "Sourcing",
+        "Procurement"
+      ],
+      "summary": "The new headquarters for the newly merged banks, completed and handed over in 2019.",
+      "images": [
+        "access-bank-hq-01",
+        "access-bank-hq-02",
+        "access-bank-hq-03"
+      ],
+      "imageAlts": [
+        "Boardroom with a long dark table and full-height glazing",
+        "Informal waiting area with soft green and grey seating",
+        "Breakout run with bright green stacking chairs"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "clickatell",
+      "name": "Clickatell",
+      "client": "Clickatell",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "venue": "Wings Tower",
+      "start": "2020",
+      "finish": "2020",
+      "durationMonths": 6,
+      "services": [
+        "Design",
+        "Build"
+      ],
+      "summary": "A six-month design-and-build of Clickatell's Lagos office at Wings Tower.",
+      "images": [
+        "clickatell-01",
+        "clickatell-02",
+        "clickatell-03"
+      ],
+      "imageAlts": [
+        "Open-plan desks with orange screens and a blue meeting room door",
+        "Workstations against a full-wall landscape mural",
+        "Desking run with a city-scene mural and soft seating"
+      ]
+    },
+    {
+      "slug": "ifc",
+      "name": "IFC",
+      "client": "IFC",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "venue": "Alliance Place",
+      "start": "2017",
+      "finish": "2018",
+      "durationMonths": 10,
+      "services": [
+        "Interior Design Services",
+        "Sourcing"
+      ],
+      "summary": "Interior design and fit-out of the IFC office at Alliance Place, Lagos.",
+      "images": [
+        "ifc-01",
+        "ifc-02",
+        "ifc-03"
+      ],
+      "imageAlts": [
+        "Tea point and high table with a wide view over the city",
+        "Circulation corridor with artwork and glazed offices",
+        "Open-plan desking along a glazed perimeter"
+      ]
+    },
+    {
+      "slug": "sterling-bank",
+      "name": "Sterling Bank",
+      "client": "Sterling Bank",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2023",
+      "finish": "2023",
+      "services": [
+        "Design",
+        "Build"
+      ],
+      "summary": "Design and build for Sterling Bank in Lagos.",
+      "images": [
+        "sterling-bank-01",
+        "sterling-bank-02",
+        "sterling-bank-03"
+      ],
+      "imageAlts": [
+        "Reception with a curved timber desk beneath the Sterling logo",
+        "Waiting lounge with pale upholstered chairs",
+        "Meeting lounge with an orange armchair and wall-mounted screen"
+      ]
+    },
+    {
+      "slug": "paramount",
+      "name": "Paramount Pictures",
+      "client": "Paramount Pictures",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2022",
+      "finish": "2023",
+      "durationMonths": 6,
+      "services": [
+        "Interior Design Services"
+      ],
+      "summary": "An office for Paramount in Lagos, built around the brand's graphic identity.",
+      "images": [
+        "paramount-01",
+        "paramount-02",
+        "paramount-03"
+      ],
+      "imageAlts": [
+        "Open plan against a full-height colour-blocked Paramount mural",
+        "Breakout with a Lagos skyline wall sculpture and orange seating",
+        "Reception with a backlit Paramount sign over a timber desk"
+      ]
+    },
+    {
+      "slug": "reckitt-benckiser",
+      "name": "Reckitt Benckiser",
+      "client": "Reckitt",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "venue": "Heritage Place",
+      "start": "2019",
+      "finish": "2019",
+      "durationMonths": 8,
+      "services": [
+        "Interior Design Services",
+        "Sourcing"
+      ],
+      "summary": "An eight-month interior design and sourcing programme at Heritage Place, Lagos.",
+      "images": [
+        "reckitt-benckiser-01",
+        "reckitt-benckiser-02",
+        "reckitt-benckiser-03"
+      ],
+      "imageAlts": [
+        "Breakout with orange soft seating and planting",
+        "Café counter with a yellow high table and mural",
+        "Desking with magenta screens beside a blue meeting room"
+      ]
+    },
+    {
+      "slug": "stanbic-ibtc",
+      "name": "Stanbic IBTC",
+      "client": "Stanbic IBTC",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2019",
+      "finish": null,
+      "services": [
+        "Design Submission"
+      ],
+      "summary": "A design submission for Stanbic IBTC in Lagos.",
+      "images": [
+        "stanbic-ibtc-01",
+        "stanbic-ibtc-02",
+        "stanbic-ibtc-03"
+      ],
+      "imageAlts": [
+        "Breakout with a painted leaf mural and soft rocking seating",
+        "Bench seating under a timber slatted ceiling with a green floor",
+        "Open-plan floor with low screens and a glazed perimeter"
+      ]
+    },
+    {
+      "slug": "nlng-campus",
+      "name": "NLNG Campus, Port Harcourt",
+      "client": "Nigeria LNG",
+      "sector": "workplace",
+      "city": "Port Harcourt",
+      "country": "Nigeria",
+      "start": "2019",
+      "finish": "2020",
+      "durationMonths": 12,
+      "services": [
+        "Space Optimisation",
+        "Design",
+        "Build"
+      ],
+      "summary": "Space optimisation and design-and-build across the NLNG campus in Port Harcourt.",
+      "images": [
+        "nlng-campus-01",
+        "nlng-campus-02",
+        "nlng-campus-03",
+        "nlng-campus-04"
+      ],
+      "imageAlts": [
+        "Wayfinding wall of moss discs with a large numeral 03",
+        "Atrium with a daylit roof and green lounge seating",
+        "Café with round tables and a planted screen",
+        "Boardroom with green drapery and a long dark table"
+      ]
+    },
+    {
+      "slug": "airtel-store",
+      "name": "Airtel Experience Centre",
+      "client": "Airtel",
+      "sector": "retail",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2016",
+      "finish": "2016",
+      "durationMonths": 6,
+      "services": [
+        "Design",
+        "Build"
+      ],
+      "summary": "A flagship experience centre for Airtel in Lagos, delivered in six months.",
+      "images": [
+        "airtel-store-01",
+        "airtel-store-02",
+        "airtel-store-03"
+      ],
+      "imageAlts": [
+        "Store floor with red service counters and a techie bar",
+        "Ceiling feature sweeping the Airtel mark across the store",
+        "Demonstration tables and red bench seating"
+      ]
+    },
+    {
+      "slug": "mtn-graphic-road",
+      "name": "MTN Graphic Road",
+      "client": "MTN",
+      "sector": "workplace",
+      "city": "Accra",
+      "country": "Ghana",
+      "start": "2014",
+      "finish": "2016",
+      "durationMonths": 24,
+      "services": [
+        "Interior Design Services",
+        "Sourcing",
+        "Procurement"
+      ],
+      "summary": "The second of MTN's two Accra programmes, delivered alongside MTN House.",
+      "images": [
+        "mtn-graphic-road-01",
+        "mtn-graphic-road-02",
+        "mtn-graphic-road-03"
+      ],
+      "imageAlts": [
+        "Glazed meeting rooms in MTN yellow off an open-plan floor",
+        "Breakout with a green modular wall feature",
+        "Training room with long desks and yellow task chairs"
+      ]
+    },
+    {
+      "slug": "mtn-cote-divoire",
+      "name": "MTN CI Place",
+      "client": "MTN",
+      "sector": "workplace",
+      "city": "Abidjan",
+      "country": "Côte d'Ivoire",
+      "start": "2023",
+      "finish": "Ongoing",
+      "services": [
+        "Interior Design Services"
+      ],
+      "summary": "An ongoing interior design programme for MTN in Abidjan.",
+      "images": [
+        "mtn-cote-divoire-01"
+      ],
+      "imageAlts": [
+        "Planted atrium workspace with people moving through a daylit floor"
+      ],
+      "featured": true
+    },
+    {
+      "slug": "project-gold",
+      "name": "Project Gold",
+      "client": null,
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2022",
+      "finish": "2023",
+      "services": [
+        "Design",
+        "Build"
+      ],
+      "summary": "A design-and-build executive floor in Lagos.",
+      "images": [
+        "project-gold-01",
+        "project-gold-02",
+        "project-gold-03"
+      ],
+      "imageAlts": [
+        "Reception with full-height timber panelling and concealed lighting",
+        "Boardroom with a solid timber table and integrated screen",
+        "Executive office with warm timber joinery"
+      ]
+    },
+    {
+      "slug": "sony-music",
+      "name": "Sony Music",
+      "client": "Sony Music",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2022",
+      "finish": "2023",
+      "services": [
+        "Interior Design Services"
+      ],
+      "summary": "An office for Sony Music in Lagos.",
+      "images": [
+        "sony-music-01",
+        "sony-music-02",
+        "sony-music-03"
+      ],
+      "imageAlts": [
+        "Lounge beneath a large Sony Music wall graphic",
+        "Breakout with tan leather seating and a round coffee table",
+        "Workspace with framed artwork and soft seating"
+      ]
+    },
+    {
+      "slug": "afd",
+      "name": "Agence Française de Développement",
+      "client": "Agence Française de Développement",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2022",
+      "finish": "2023",
+      "services": [
+        "Interior Design Services"
+      ],
+      "summary": "An interior design service for AFD's Lagos office.",
+      "images": [
+        "afd-01",
+        "afd-02",
+        "afd-03"
+      ],
+      "imageAlts": [
+        "Timber-framed meeting booth in blue with a pendant light",
+        "Long boardroom with a dark table and acoustic ceiling",
+        "Lounge with red armchairs and framed artwork"
+      ]
+    },
+    {
+      "slug": "continental-re",
+      "name": "Continental Reinsurance",
+      "client": "Continental Reinsurance",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": null,
+      "finish": null,
+      "services": [
+        "Design Consultancy"
+      ],
+      "summary": "Design consultancy for the Continental Reinsurance head office in Lagos.",
+      "images": [
+        "continental-re-01",
+        "continental-re-02",
+        "continental-re-03"
+      ],
+      "imageAlts": [
+        "Reception with a timber-clad column and stone desk",
+        "Breakout with an orange armchair and a large canvas",
+        "Lounge with open shelving and soft seating"
+      ]
+    },
+    {
+      "slug": "nmrc",
+      "name": "NMRC",
+      "client": "NMRC",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": null,
+      "finish": null,
+      "services": [
+        "Design",
+        "Build"
+      ],
+      "summary": "Design and build services for NMRC in Lagos.",
+      "images": [
+        "nmrc-01",
+        "nmrc-02",
+        "nmrc-03"
+      ],
+      "imageAlts": [
+        "Timber meeting booth with blue upholstery and a pendant light",
+        "Long boardroom with a dark veneer table",
+        "Open-plan desking with green task chairs"
+      ]
+    },
+    {
+      "slug": "alp",
+      "name": "ALP",
+      "client": null,
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2023",
+      "finish": "2023",
+      "services": [
+        "Interior Design Services"
+      ],
+      "summary": "An interior design service in Lagos, delivered in 2023.",
+      "images": [
+        "alp-01",
+        "alp-02",
+        "alp-03"
+      ],
+      "imageAlts": [
+        "Reception with a timber-clad column and planting",
+        "Waiting lounge with open shelving and soft chairs",
+        "Open-plan desking with dual monitors"
+      ]
+    },
+    {
+      "slug": "promasidor",
+      "name": "Promasidor",
+      "client": "Promasidor",
+      "sector": "workplace",
+      "city": "Lagos",
+      "country": "Nigeria",
+      "start": "2022",
+      "finish": "2022",
+      "durationMonths": 6,
+      "services": [
+        "Design Consultancy",
+        "Sourcing"
+      ],
+      "summary": "Design consultancy and sourcing for Promasidor in Lagos, delivered in six months.",
+      "images": [
+        "promasidor-01",
+        "promasidor-02",
+        "promasidor-03"
+      ],
+      "imageAlts": [
+        "Meeting booths in teal and navy with a graphic wall treatment",
+        "Breakout with a planted screen and soft seating",
+        "Open-plan floor with orange accents and a timber ceiling"
+      ]
+    }
+  ],
+  "projectIndex": [
+    {
+      "name": "Alpha One Towers, Eko Atlantic, Lagos",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Airtel Flagship Store, Lagos",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NTel Head Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NTel Flagship Stores",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Dangote Office Remodelling",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Diamond / Access Bank Head Office",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "IFC Head Office, Ikoyi",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Unilever Head Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Continental Reinsurance Head Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Coca-Cola Head Office",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "British Airways Lagos Lounge Refit",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Ford Foundation New Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "JPM Chase Fit-Out",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Centre Heights, VI, Lagos",
+      "type": "Hospitality",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Nestlé Head Office, Lagos",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Ericsson Head Office Resize, Lagos",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Ericsson Head Office, Accra",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Ghana"
+    },
+    {
+      "name": "Huawei Office Expansion, Lagos",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Huawei Office, Accra",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Ghana"
+    },
+    {
+      "name": "Pfizer Head Office Fit-Out",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Reckitt Benckiser Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NBC Training Centre, Lagos",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NLNG Campus",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Ecobank Head Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Clickatell",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "IFF",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NMRC",
+      "type": "Commercial",
+      "task": "Design and Build Service",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Promasidor",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "First E&P Office Fit-Out",
+      "type": "Hospitality",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NLNG Head Office — Office Optimisation",
+      "type": "Commercial",
+      "task": "Design and Build Service",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Ruxton Project",
+      "type": "Residential",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Party House",
+      "type": "Residential",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Probyn Haven",
+      "type": "Residential",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Wesley Residential Series, Lagos",
+      "type": "Residential",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Paramount Pictures",
+      "type": "Commercial",
+      "task": "Design and Build Service",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Guinness Head Office Remodelling",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Sony Music",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "MTN Chairman's Office Remodelling",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Sterling Bank",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Agence Française de Développement",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Afreximbank HQ, Abuja",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Stanbic IBTC",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Onomo Hotel",
+      "type": "Hospitality",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Hôtel Takum, Taraba",
+      "type": "Hospitality",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "MTN Head Office, Accra",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Ghana"
+    },
+    {
+      "name": "MTN Côte d'Ivoire, Abidjan",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Côte d'Ivoire"
+    },
+    {
+      "name": "Dangote HQ, Lagos",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Diageo Office",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Skyline Hotel",
+      "type": "Hospitality",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Boston Consulting Group",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NICON, Lekki, Lagos",
+      "type": "Commercial",
+      "task": "Design and Build",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Center Heights, Lagos",
+      "type": "Commercial",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    },
+    {
+      "name": "Interswitch Office Fit-out, Abuja & Lagos",
+      "type": "Commercial",
+      "task": "Design and Fit-out",
+      "location": "Nigeria"
+    },
+    {
+      "name": "NLNG Bonny Hospitality Facilities Upgrade",
+      "type": "Hospitality",
+      "task": "Design Consultancy",
+      "location": "Nigeria"
+    }
+  ]
+}

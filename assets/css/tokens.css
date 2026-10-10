@@ -1,0 +1,118 @@
+/* ==========================================================================
+   James Cubitt Interiors — design tokens
+   --------------------------------------------------------------------------
+   Derived from the Cuub Studio design system (cuubstudio.com-design.md),
+   with the accent reconciled to the JCI brand red sampled from the
+   James Cubitt Interiors logo mark (#D42127).
+
+   Everything below is a token. Components never hard-code a colour, a type
+   size or a spacing value — they reference these variables, so the whole
+   site can be re-skinned from this one file.
+   ========================================================================== */
+
+:root {
+  /* ---- Colour -----------------------------------------------------------
+     Dark canvas, white type, one expressive accent. The red is rare by
+     design: markers, rules, hovers, states. Never large fills.           */
+  --c-primary:      #FFFFFF; /* key text, nav, logo, strongest CTA surface */
+  --c-secondary:    #B3B3B3; /* supporting text, metadata                  */
+  --c-tertiary:     #D42127; /* JCI red — the only expressive colour       */
+  --c-tertiary-deep:#9E1B22; /* print-furniture red, used for hover/press  */
+  --c-neutral:      #000000; /* canvas                                     */
+  --c-surface:      #111111; /* lifted panels, overlays, nested regions    */
+  --c-surface-2:    #171717; /* second lift — table stripes, input wells   */
+  --c-on-surface:   #FFFFFF; /* default foreground on dark surfaces        */
+  --c-border:       #374151; /* delicate structure, never heavy boxing     */
+  --c-border-soft:  #1F2630; /* hairlines inside dark panels               */
+  --c-error:        #D42127; /* states reuse the accent, no new warning hue*/
+
+  /* Inverted surface — used sparingly for the light editorial break.      */
+  --c-inverse-bg:   #FFFFFF;
+  --c-inverse-fg:   #000000;
+
+  /* ---- Typography -------------------------------------------------------
+     Two voices: a grotesque for expressive headlines (Archivo stands in
+     for TT Firs Neue, which is not web-licensed), and Helvetica Neue for
+     the interface, with Inter as the cross-platform equivalent.          */
+  --font-display: "Archivo", "TT Firs Neue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-ui: "Helvetica Neue", "Inter", Helvetica, Arial, sans-serif;
+
+  --fs-display: 70px;  /* headline-display / quote-display                 */
+  --lh-display: 77px;
+  --fs-h-lg: 24px;  --lh-h-lg: 29px;
+  --fs-h-md: 20px;  --lh-h-md: 24px;
+  --fs-h-sm: 18px;  --lh-h-sm: 22px;
+  --fs-body-lg: 18px; --lh-body-lg: 28px;
+  --fs-body-md: 16px; --lh-body-md: 1.6;
+  --fs-body-sm: 14px; --lh-body-sm: 20px;
+  --fs-label-lg: 16px;
+  --fs-label-md: 16px;
+  --fs-label-sm: 12px; --lh-label-sm: 16px; --ls-label-sm: 0.08em;
+  --fs-nav: 18px;   --lh-nav: 22px;
+  --fs-button: 16px; --lh-button: 20px;
+  --fs-caption: 12px; --lh-caption: 16px;
+
+  --fw-regular: 400;
+  --fw-semibold: 600;
+
+  /* Fluid extension of headline-display for full-bleed hero moments.
+     Collapses to the 70px token at desktop width and below.              */
+  --fs-hero: clamp(40px, 7.4vw, 104px);
+  --fs-section: clamp(30px, 4.6vw, 70px);
+
+  /* ---- Radius -----------------------------------------------------------
+     Cut and framed, not bubbly. Small radii only.                        */
+  --r-none: 0px;
+  --r-sm: 4px;   /* buttons  */
+  --r-md: 8px;   /* cards    */
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-full: 9999px; /* chips only */
+
+  /* ---- Spacing ----------------------------------------------------------*/
+  --s-xs: 6px;
+  --s-sm: 18px;
+  --s-md: 30px;
+  --s-lg: 46px;
+  --s-xl: 148px;   /* major vertical breaks                                */
+
+  /* Responsive section rhythm: never smaller than lg, never larger than xl */
+  --s-section: clamp(var(--s-lg), 11vw, var(--s-xl));
+
+  /* ---- Layout -----------------------------------------------------------*/
+  --gutter: clamp(16px, 4vw, var(--s-lg));
+  --measure: 62ch;        /* comfortable reading width                     */
+  --maxw: 1600px;
+  --maxw-text: 1180px;
+  --header-h: 76px;
+
+  /* ---- Motion -----------------------------------------------------------
+     Restrained. Nothing bounces; nothing is decorative.                   */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-fast: 140ms;
+  --t-mid: 320ms;
+  --t-slow: 700ms;
+}
+
+/* This system is dark by definition, not by preference: the canvas is black
+   so that the photography and the white type carry the hierarchy. We do not
+   follow prefers-color-scheme — a light JCI is a different brand.
+   A light palette is kept here as an opt-in (<html data-theme="light">) for
+   any future surface that genuinely needs one, such as a print stylesheet
+   or an embedded widget. */
+:root[data-theme="light"] {
+  --c-neutral:    #FFFFFF;
+  --c-surface:    #F4F4F4;
+  --c-surface-2:  #EBEBEB;
+  --c-primary:    #000000;
+  --c-secondary:  #5A5A5A;
+  --c-on-surface: #0A0A0A;
+  --c-border:     #D4D4D4;
+  --c-border-soft:#E6E6E6;
+  --c-inverse-bg: #000000;
+  --c-inverse-fg: #FFFFFF;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --t-fast: 0ms; --t-mid: 0ms; --t-slow: 0ms; }
+}
