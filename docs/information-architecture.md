@@ -1,156 +1,180 @@
 # Information architecture — jamescubittinteriors.com
 
-As built. Paths are relative to the site root.
+As built, following the as-built audit of **gensler.com** supplied as the
+project roadmap: its eight-item primary navigation, its thirteen URL
+templates, its ten-block homepage composition and its global chrome, mapped
+onto a single West African practice.
 
-The structure is adapted from the as-built audit of **gensler.com** supplied
-as the roadmap for this project, scaled from a 58-office global practice to a
-single West African studio, and with the six problems that audit identified
-deliberately designed out. Those fixes are listed at the end.
+**114 pages.** Paths are relative to the site root.
 
 ---
 
-## Primary navigation — 5 items
+## Primary navigation — 8 items
+
+The document's eight, in its order, with the same URL roots.
 
 ```
-Home                                          /
-├── Work                                      /work/
-│   └── Project                               /work/{slug}/            28 pages
-├── Expertise                                 /expertise/
-│   └── Sector                                /expertise/{sector}/      4 pages
-├── Services                                  /services/
-├── Studio                                    /studio/
-└── Contact                                   /contact/
+Home                                        /
+├── Research & Insights        mega-menu    /gri/
+│   ├── Latest Research & Insights          /latest-research-insights/
+│   ├── Journal                             /blog/            + /blog/{slug}/
+│   ├── Research Library                    /research-library/
+│   └── Featured topics × 5                 /research-topic-{topic}/
+├── Expertise                  mega-menu    /expertise/
+│   └── Practice × 14                       /expertise/{practice}/
+├── Projects                                /projects/
+│   ├── All                                 /projects/all/
+│   ├── Project × 28                        /projects/{slug}/
+│   └── Case study × 7                      /case-study/{slug}/
+├── People                                  /people/
+│   ├── Leadership                          /people/leadership/
+│   └── Profile × 3                         /people/{first-last}/
+├── Offices                    mega-menu    /offices/
+│   └── Office × 6                          /offices/{city}/
+│       └── 4 tabs each                     /offices/{city}/{tab}/
+├── About                                   /about/
+│   ├── In The Media                        /in-the-media/
+│   ├── Press Releases                      /press-releases/
+│   ├── Community                           /about/community/
+│   ├── Inclusion                           /about/inclusion/
+│   └── Ethics & Compliance                 /ethics-compliance/
+├── Careers                                 /careers/
+│   └── not in menu, linked from careers    /how-to-apply/ · /internships/
+│                                           /great-people-great-rewards/
+│                                           /recruitment-privacy-statement/
+└── Contact Us                              /contact/
 ```
 
-Plus `404.html`, `sitemap.xml`, `robots.txt`. **39 pages in total.**
-
-Gensler runs eight primary items with mega-menus. JCI has roughly one
-twentieth of the content, so eight would be mostly empty rooms. Five items fit
-a single row at every breakpoint and need no mega-menu, which is why there
-isn't one.
+Plus `/doc/jci-fact-sheet/`, `/privacy/`, `/transparency-statement/`,
+`404.html`, `sitemap.xml`, `robots.txt`, `search-index.json`.
 
 ---
 
 ## Content types & URL patterns
 
-| Template | URL pattern | Example | Indexed by |
-| --- | --- | --- | --- |
-| Home | `/` | `/` | — |
-| Work index | `/work/` | `/work/` | nav, footer, sitemap |
-| Work index, filtered | `/work/?sector={sector}` | `/work/?sector=hospitality` | sector pages |
-| Project | `/work/{slug}/` | `/work/afreximbank-hq/` | work index, sector pages, project pager |
-| Expertise index | `/expertise/` | `/expertise/` | nav, footer |
-| Sector | `/expertise/{sector}/` | `/expertise/workplace/` | expertise index, home, sibling sectors |
-| Services | `/services/` | `/services/` | nav, footer |
-| Studio | `/studio/` | `/studio/` | nav, footer, home |
-| Contact | `/contact/` | `/contact/` | nav, footer, every CTA |
-| Capability statement | `/work/#index` | `/work/#index` | home clientele block |
+The document's thirteen templates, and what each is here.
 
-Slugs are stable, lowercase, hyphenated, and derived from the project name —
-never from a date or a client code, so they survive a re-shoot or a rename of
-the sector.
+| Template | Document's pattern | Built | Count |
+| --- | --- | --- | --- |
+| Research report | `/gri/{slug}` | same | template only — none published |
+| Blog article | `/blog/{slug}` | same | template only — none published |
+| Research topic hub | `/research-topic-{topic}` | same | 5 |
+| Project | `/projects/{slug}` | same | 28 |
+| Case study | `/case-study/{slug}` | same | 7 |
+| Person profile | `/people/{name}` | `/people/{first-last}/` | 3 |
+| Expertise / practice | `/expertise/{practice}` | same | 14 |
+| Office | `/offices/{city}[/{tab}]` | same, 4 tabs each | 6 × 5 |
+| Press release | `/press-releases/{slug}` | same | template only — none published |
+| Downloadable doc | `/doc/{name}` | same | 1 — the fact sheet |
+| Design Forecast | `/publications/design-forecast/{year}` | **not built** | Gensler's own annual publication; no JCI analogue |
+| Campaign / landing | `/{slug}` flat | **not built** | finding 1 of the audit calls flat root pages out |
+| Embedded tool | `/iframe/{slug}` | **not built** | nothing to embed |
+
+### Expertise: where the sectors and the services both live
+
+gensler.com's 34 practices mix **sectors** (Aviation, Healthcare, Hospitality,
+Retail, Residential) with **services** (Brand Design, Strategy, Wellness,
+Product Development). JCI's fourteen follow the same mixed model:
+
+- **Sectors (6)** — Workplace, Hospitality, Retail, Residential, Healthcare, Education
+- **Services (8)** — Design, Workplace Strategy, Wellness Assessment & Correction,
+  Experiential Projects, Design Intelligence, Design Management, FFE, Lighting Design
+
+An earlier draft of this site had a separate top-level "Services" page, which
+is not in the document. It is gone; that content is now `/expertise/{practice}/`
+where the model puts it.
 
 ---
 
-## Page composition
+## Homepage composition — the document's ten blocks, top to bottom
 
-### Home — top to bottom
-
-| | Block | Notes |
+| | Block | Built as |
 | --- | --- | --- |
-| 01 | Hero | Full-bleed photograph, oversized headline, two CTAs, image credit |
-| 02 | Stats | 1947 · 60+ years · 50+ interiors · 5 countries |
-| 03 | Mission | "Our environment is changing how we live." + two paragraphs |
-| 04 | Selected work | 6 featured projects, 3-up |
-| 05 | Quote band | Full-bleed photograph with the wellness quote |
-| 06 | Sectors | 4 sector cards linking to `/expertise/{sector}/` |
-| 07 | Clientele | Statement + 36-client grid, link to the full project list |
-| 08 | CTA | "Tell us what the space has to do." |
+| 01 | Hero carousel · ~8 video/image slides | 8 slides, scroll-snap, dots, arrows, 7s autoplay that stops on interaction |
+| 02 | Featured project caption · full-bleed image with project link | Afreximbank HQ, full-bleed, linked to its case study |
+| 03 | Trending topics · 3 text links | first three research topics |
+| 04 | Latest feed · ~25 mixed cards, tagged | 25 cards tagged Case study / Project / Film, newest first |
+| 05 | Feed CTAs · View latest research, View blog | both |
+| 06 | Mission statement · firm summary, link to /about | same |
+| 07 | Spotlight · themed video block with 4 related articles | the practice film + 4 related case studies |
+| 08 | Featured projects · 3 project cards | same |
+| 09 | Newsletter sign-up | email subscribe — no fake form with no backend behind it |
+| 10 | Careers CTA · Join our team → /careers | same |
 
-Gensler's homepage carries ten blocks including a video carousel, a ~25-card
-mixed feed and a newsletter sign-up. JCI has no editorial operation to feed a
-carousel or a newsletter, so neither is here: an empty feed reads worse than
-no feed. See *Deliberately not built* below.
-
-### Project — `/work/{slug}/`
-
-Short photographic hero → factsheet strip (client, sector, location, year,
-duration, services) → narrative → gallery → previous/next pager → CTA.
-
-The factsheet is a `<dl>` and only renders the facts a given project actually
-has, so a project with no recorded duration does not show an empty field.
-
-### Sector — `/expertise/{sector}/`
-
-Photographic hero → "How we approach it" → every project tagged to that sector
-→ links to the other three sectors.
-
-A project can belong to more than one sector (`alsoIn` in the content file).
-Afreximbank HQ is both workplace and hospitality, and appears under both.
+Block 04 is where the empty sections show. The feed is built from every
+published list in `content/site.json`; today that is projects, case studies
+and the film. Research notes, journal entries, press releases and media
+mentions join it automatically as soon as those lists have entries, and the
+block carries a line saying so.
 
 ---
 
 ## Global chrome
 
-**Header** — logo, 5-item nav, mobile menu button. Fixed, transparent over the
-hero with a gradient scrim, solid black once scrolled past 24px. No search: at
-39 pages, search would be slower than the nav.
+**Header** — logo · 8-item nav with mega-menus on Research & Insights,
+Expertise and Offices · Search · Share (LinkedIn, X, Facebook, email).
+Exactly the document's header spec.
 
-**Footer** — the practice promise, an Explore column mirroring the nav, a
-contact column (email, phone, cities), copyright and the tagline.
+**Search overlay** — keyword search with filters for **Category**, **Topics**
+and **Offices**, sort by **Relevance / Date / Name**, and popular searches.
+Client-side over `search-index.json`, which the build emits with one entry
+per page (112 of the 114). Opens from the header or by pressing `/`.
 
-**Every page** ends with the same CTA band except `/contact/`, which is the
-destination.
-
----
-
-## Deliberately not built
-
-Three sections from the Gensler model are in the architecture but not in this
-build, because JCI does not yet have the content to fill them honestly:
-
-| Section | Gensler equivalent | Why not now | What it would need |
-| --- | --- | --- | --- |
-| Insights / Journal | Research & Insights, `dialogue` blog, Design Forecast | Writing it would mean inventing editorial the practice has not published | 6–8 real articles, then `/insights/` and `/insights/{slug}/` |
-| Offices | `/offices/{city}/` × 58 | JCI operates from one studio; the group network is a list on `/studio/`, which is what it is | A second staffed studio |
-| Careers | `/careers/` with 6 sub-pages | No live roles supplied | Open roles and a hiring process to describe |
-
-Each slots into the existing nav without restructuring: Insights between Work
-and Expertise, Careers in the footer first and the nav later.
+**Footer** — Contact · Fact Sheet · Guiding Principles · Newsletter ·
+Inclusion · Ethics & Compliance · Resilience · Social · Privacy · Cookie
+Preferences · Transparency Statement. The document's full set.
 
 ---
 
-## How the gensler.com audit findings were handled
+## Deliberate differences, and why
 
-The roadmap document listed six observations "for a rebuild or audit". All six
-are addressed:
+Five places where this site does not copy gensler.com. Each is either an
+audit finding the document itself raises, or a point where copying would
+mean publishing something untrue.
 
-1. **"Hierarchy is shallow and wide; campaign and topic pages are flat at the
-   root, so the URL doesn't show where a page belongs."**
-   Every page here sits under the section it belongs to. There are no
-   root-level campaign pages, and no page is more than two levels deep.
+1. **Expertise has an index page.** The document records `NO LANDING PAGE ·
+   MENU ONLY`, and finding 3 calls it out. `/expertise/` exists.
 
-2. **"Research has two entry points, plus `/latest-research-insights` and
-   `/gri/all`. Consolidating them would reduce overlap."**
-   Each content type has exactly one canonical index. Work is only at
-   `/work/`; expertise only at `/expertise/`. No aliases, no duplicates.
+2. **Filters are query strings, not hash fragments.** The document has
+   `/projects/all#topics` and `/people#offices`; finding 4 notes search
+   engines don't index those. Here it is `/projects/all/?practice=…&topic=…
+   &office=…`, and every filter is *also* a standalone page — the practice
+   page, the topic hub, the office page — each with its own copy, title and
+   description. The chips are real links to those pages, so with JavaScript
+   off nothing is a dead control.
 
-3. **"Expertise has no index page; the 34 practices are reachable only from
-   the menu."**
-   `/expertise/` is a real, linked, indexable page listing all four sectors.
+3. **Six offices, not 58.** Finding 5 notes that 58 offices × 5 pages is
+   ~290 URLs of templated thin content. The template is identical — overview
+   plus Leaders, Projects, News, Research & Insight — at the size the
+   practice actually is. Offices are the five countries in the brochure's
+   footprint plus Abuja; the wider James Cubitt group's twelve cities are
+   listed on `/offices/` but do not get pages, because they are not JCI
+   studios.
 
-4. **"Project and people filters use hash fragments (`#topics`, `#offices`),
-   which search engines don't index as separate pages."**
-   The work filter uses a real query string, `/work/?sector=hospitality`.
-   Sector pages at `/expertise/{sector}/` are separately indexable documents
-   carrying the same project sets with their own copy, titles and
-   descriptions. The in-page filter is an enhancement over that, not the only
-   route to it.
+4. **No Design Forecast, no flat campaign pages, no embedded tools.** The
+   first is Gensler's own annual publication. The second is finding 1 —
+   `/{slug}` at the root hides where a page belongs. The third has nothing
+   to embed.
 
-5. **"Offices are the largest templated section (58 × 5 pages); each office
-   tab reuses global content filtered by location."**
-   Not replicated. Locations are a list on `/studio/`, not 290 thin pages.
+5. **Nothing invented.** Research & Insights, the Journal, Press Releases,
+   In The Media, Community, Inclusion, Ethics, Privacy, the Transparency
+   Statement and the Careers sub-pages are all built, routed, styled,
+   indexed and linked — and each says plainly that its content has not been
+   supplied yet. Adding an entry to the matching list in
+   `content/site.json` publishes it to its own page, to the section index,
+   to the homepage feed and to the search index with no code change.
 
-6. **"Legacy Design Forecast pages from 2015–2016 remain live at the root."**
-   There is no legacy to carry. The rule going forward: a page that is no
-   longer true is removed or redirected, not left at the root.
+---
+
+## Audit findings
+
+All six observations at the end of the roadmap document are addressed:
+
+| # | Finding | Here |
+| --- | --- | --- |
+| 1 | Shallow and wide; campaign and topic pages flat at the root | Every page sits under its section. No root-level campaign pages. Research topics keep the document's `/research-topic-{topic}` pattern, which is flat by its own spec — the one place the pattern is followed as given rather than corrected, so the URL stays recognisable |
+| 2 | Research has two entry points plus two more indexes | One canonical index per content type. `/gri/` is the only Research & Insights root; `/latest-research-insights/` is its feed, not a second front door |
+| 3 | Expertise has no index page | `/expertise/` exists and is linked and indexable |
+| 4 | Filters use hash fragments | Query strings, plus a standalone page per filter value |
+| 5 | Offices are the largest templated section | Same template, six locations |
+| 6 | Legacy pages still live at the root | No legacy. The rule: a page that is no longer true is removed or redirected, not left at the root |

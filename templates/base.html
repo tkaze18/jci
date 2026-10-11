@@ -26,60 +26,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Inter:wght@400;600&display=swap">
 <link rel="stylesheet" href="{{root}}assets/css/tokens.css">
 <link rel="stylesheet" href="{{root}}assets/css/site.css">
+<script>window.JCI_ROOT = "{{root}}";</script>
 {{head}}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="header">
-  <div class="header__inner">
-    <a class="logo" href="{{root}}" aria-label="James Cubitt Interiors — home">
-      <img class="logo__mark" src="{{root}}assets/img/brand/logo-mark-card.webp" alt="" width="30" height="30" decoding="async">
-      <span class="logo__text">James Cubitt<span>Interiors</span></span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
-    <nav class="nav" id="primary-nav" aria-label="Primary">
-{{nav}}
-    </nav>
-  </div>
-</header>
+{{header}}
 
 <main id="main">
 {{body}}
 </main>
 
-<footer class="footer">
-  <div class="shell">
-    <div class="footer__grid">
-      <div class="footer__col">
-        <p class="footer__promise">Improving well-being through interior design.</p>
-        <p class="t-sm t-muted">James Cubitt Interiors is part of the James Cubitt group — a practice founded in London in 1947 and working in West Africa since 1950.</p>
-      </div>
-      <div class="footer__col">
-        <h2>Explore</h2>
-        <ul>
-          <li><a href="{{root}}work/">Work</a></li>
-          <li><a href="{{root}}expertise/">Expertise</a></li>
-          <li><a href="{{root}}services/">Services</a></li>
-          <li><a href="{{root}}studio/">Studio</a></li>
-          <li><a href="{{root}}contact/">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h2>Get in touch</h2>
-        <ul>
-          <li><a href="mailto:info@jamescubittinteriors.com">info@jamescubittinteriors.com</a></li>
-          <li><a href="tel:+2347045771218">+234 704 577 1218</a></li>
-          <li><span class="t-muted">Lagos · Abuja · Accra · Abidjan</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>&copy; <span data-year>2025</span> James Cubitt Interiors. All rights reserved.</span>
-      <span>we design, you experience</span>
-    </div>
-  </div>
-</footer>
+{{footer}}
 
 <script src="{{root}}assets/js/site.js" defer></script>
 {{scripts}}

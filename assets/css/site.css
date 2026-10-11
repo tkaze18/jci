@@ -541,6 +541,289 @@ a { color: inherit; text-decoration: none; }
 .feature:hover .feature__media img { transform: scale(1.04); }
 .feature__body { display: grid; gap: var(--s-sm); align-content: start; }
 
+
+/* --------------------------------------------------------------------------
+   Header tools, mega-menus and the search overlay
+   The three mega-menus (Research & Insights, Expertise, Offices) and the
+   search overlay with Category / Topic / Office filters come straight from
+   the "Global chrome" panel of the architecture document.
+   -------------------------------------------------------------------------- */
+.header__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--s-sm);
+}
+.iconbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-xs);
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-size: var(--fs-label-sm);
+  letter-spacing: var(--ls-label-sm);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  padding: var(--s-xs) 0;
+}
+.iconbtn span[aria-hidden] { font-size: 19px; line-height: 1; }
+.iconbtn:hover { color: var(--c-tertiary); }
+
+.share { display: flex; gap: var(--s-xs); }
+.share__link {
+  font-size: var(--fs-caption);
+  letter-spacing: 0.04em;
+  font-weight: var(--fw-semibold);
+  color: var(--c-secondary);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  min-width: 26px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 4px;
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.share__link:hover { color: var(--c-tertiary); border-color: var(--c-tertiary); }
+@media (max-width: 1180px) { .share { display: none; } }
+@media (max-width: 860px) { .iconbtn__label { display: none; } }
+
+.mega {
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: var(--c-neutral);
+  border-block: 1px solid var(--c-border-soft);
+  padding-block: var(--s-md) var(--s-lg);
+}
+.mega[hidden] { display: none; }
+.mega__inner {
+  display: grid;
+  gap: var(--s-md) var(--s-lg);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  align-items: start;
+}
+.mega__col--wide { grid-column: span 2; }
+.mega__head {
+  font-size: var(--fs-label-sm);
+  letter-spacing: var(--ls-label-sm);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--c-secondary);
+  margin-bottom: var(--s-sm);
+}
+.mega__col ul { display: grid; gap: var(--s-xs); }
+.mega__col a {
+  font-size: var(--fs-body-md);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.mega__col a:hover { color: var(--c-tertiary); border-bottom-color: var(--c-tertiary); }
+@media (max-width: 860px) { .mega { display: none !important; } }
+
+.searchlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--c-neutral);
+  overflow-y: auto;
+  padding-block: var(--s-lg);
+}
+.searchlay[hidden] { display: none; }
+.searchlay__bar { display: flex; gap: var(--s-sm); align-items: center; }
+.searchlay__input {
+  flex: 1;
+  background: var(--c-surface);
+  color: var(--c-on-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.4vw, 30px);
+  font-weight: var(--fw-semibold);
+}
+.searchlay__filters {
+  display: grid;
+  gap: var(--s-sm);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: var(--s-md);
+  padding-block: var(--s-sm);
+  border-block: 1px solid var(--c-border-soft);
+}
+.searchlay__filter { display: grid; gap: var(--s-xs); }
+.searchlay__filter select {
+  background: var(--c-surface);
+  color: var(--c-on-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-sm);
+  padding: 8px 10px;
+  font: inherit;
+  font-size: var(--fs-body-sm);
+}
+.searchlay__popular { margin-top: var(--s-sm); }
+.searchlay__popular a { border-bottom: 1px solid var(--c-border); }
+.searchlay__popular a:hover { color: var(--c-tertiary); border-bottom-color: var(--c-tertiary); }
+.searchlay__results { margin-top: var(--s-md); display: grid; gap: 0; }
+.sresult {
+  display: grid;
+  gap: var(--s-xs) var(--s-md);
+  grid-template-columns: 1fr;
+  padding-block: var(--s-sm);
+  border-top: 1px solid var(--c-border-soft);
+}
+@media (min-width: 760px) {
+  .sresult { grid-template-columns: 8rem minmax(0, 1fr) 8rem; align-items: baseline; }
+}
+.sresult__cat {
+  font-size: var(--fs-label-sm);
+  letter-spacing: var(--ls-label-sm);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--c-tertiary);
+}
+.sresult__title { font-size: var(--fs-h-md); font-weight: var(--fw-semibold); }
+.sresult__meta { color: var(--c-secondary); font-size: var(--fs-body-sm); }
+.sresult:hover .sresult__title { color: var(--c-tertiary); }
+
+/* --------------------------------------------------------------------------
+   Hero carousel — homepage block 01
+   Scroll-snap does the work, so it is swipeable and keyboard-navigable with
+   no JavaScript; the script only adds the dots, arrows and autoplay.
+   -------------------------------------------------------------------------- */
+.carousel { position: relative; }
+.carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+.carousel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  min-height: min(92svh, 920px);
+  isolation: isolate;
+}
+.carousel__slide a { display: block; height: 100%; }
+.carousel__slide img {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; object-fit: cover;
+}
+.carousel__scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.5) 40%, rgba(0,0,0,.2) 70%, rgba(0,0,0,.5) 100%);
+}
+.carousel__body {
+  position: absolute;
+  left: 0; right: 0; bottom: clamp(74px, 11vw, 128px);
+  color: #fff;
+}
+.carousel__controls {
+  position: absolute;
+  left: 0; right: 0; bottom: clamp(var(--s-md), 4vw, var(--s-lg));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-sm);
+  z-index: 2;
+}
+.carousel__arrow {
+  background: rgba(0,0,0,.4);
+  border: 1px solid rgba(255,255,255,.35);
+  color: #fff;
+  border-radius: var(--r-full);
+  width: 38px; height: 38px;
+  font-size: 20px; line-height: 1;
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.carousel__arrow:hover { background: var(--c-tertiary); border-color: var(--c-tertiary); }
+.carousel__dots { display: flex; gap: var(--s-xs); }
+.carousel__dot {
+  width: 28px; height: 3px;
+  border: 0; padding: 0;
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+  transition: background var(--t-fast) var(--ease);
+}
+.carousel__dot[aria-current="true"] { background: var(--c-tertiary); }
+.js .carousel__track { overflow-x: hidden; }
+
+/* --------------------------------------------------------------------------
+   Trending topics, newsletter, spotlight — homepage blocks 03, 07, 09
+   -------------------------------------------------------------------------- */
+.trending {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-md);
+  flex-wrap: wrap;
+  padding-block: var(--s-sm);
+  border-block: 1px solid var(--c-border-soft);
+}
+.trending__list { display: flex; gap: var(--s-md); flex-wrap: wrap; }
+.trending__list a {
+  font-family: var(--font-display);
+  font-size: var(--fs-h-md);
+  font-weight: var(--fw-semibold);
+  border-bottom: 1px solid var(--c-border);
+  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.trending__list a:hover { color: var(--c-tertiary); border-bottom-color: var(--c-tertiary); }
+
+.spotlight { display: grid; gap: var(--s-md) var(--s-lg); grid-template-columns: 1fr; }
+@media (min-width: 900px) { .spotlight { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
+.spotlight__side { align-self: center; }
+.spotlight__related { display: grid; gap: 0; margin-top: var(--s-sm); }
+.spotlight__related li { border-top: 1px solid var(--c-border-soft); }
+.spotlight__related li:last-child { border-bottom: 1px solid var(--c-border-soft); }
+.spotlight__related a { display: grid; gap: 2px; padding-block: var(--s-sm); }
+.spotlight__related a:hover .t-h-sm { color: var(--c-tertiary); }
+
+.newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-md);
+  flex-wrap: wrap;
+  padding: var(--s-md);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+}
+
+/* --------------------------------------------------------------------------
+   Empty states — sections whose template is ready and whose content is not
+   -------------------------------------------------------------------------- */
+.empty {
+  padding: var(--s-md);
+  border: 1px dashed var(--c-border);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+.empty .t-lede { margin: 0; }
+
+.card--text .card__media { display: none; }
+.card--text {
+  border: 1px solid var(--c-border-soft);
+  border-radius: var(--r-md);
+  padding: var(--s-md);
+  transition: border-color var(--t-fast) var(--ease);
+}
+.card--text:hover { border-color: var(--c-tertiary); }
+.card--text .card__body { padding-top: 0; }
+
+.filters__legend { margin-right: var(--s-xs); }
+.people__row:hover .people__name { color: var(--c-tertiary); }
+
+.footer__grid { grid-template-columns: 1fr; }
+@media (min-width: 760px)  { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1040px) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1.1fr; } }
+.footer__legal a { border-bottom: 1px solid transparent; }
+.footer__legal a:hover { border-bottom-color: var(--c-tertiary); }
+
 /* --------------------------------------------------------------------------
    Film
    The poster does the work; the overlay is the only ornament, and it is the

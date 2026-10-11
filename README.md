@@ -1,8 +1,14 @@
 # James Cubitt Interiors — website
 
 A static site for James Cubitt Interiors (JCI), the commercial interior
-architecture practice. Dark editorial canvas, oversized white type, one red
-accent, photography doing the emotional work.
+architecture practice. 114 pages. Dark editorial canvas, oversized white
+type, one red accent, photography doing the emotional work.
+
+The information architecture follows the as-built audit of gensler.com
+supplied as the project roadmap — its eight-item navigation, thirteen URL
+templates, ten-block homepage and global chrome, mapped onto a single West
+African practice. `docs/information-architecture.md` records the mapping
+page by page, including the five places it deliberately differs.
 
 ```
 python3 scripts/serve.py        # build + serve on http://127.0.0.1:8000
@@ -34,6 +40,13 @@ and images that any static host will serve.
 **Copy, projects, people, clients** — edit `content/site.json` and rebuild.
 Nothing else needs touching. A new project needs a `slug`, a `sector`, at
 least one entry in `images`, and a matching `imageAlts` entry per image.
+
+**Filling an empty section** — Research & Insights, the Journal, Press
+Releases, In The Media and Careers are built, routed and styled, and each
+says that its content is not supplied yet. Add an entry to the matching
+list in `content/site.json` (`insights`, `blog`, `press`, `media`, `roles`)
+and it publishes to its own page, the section index, the homepage feed and
+the search index. No code change.
 
 **Look and feel** — edit `assets/css/tokens.css`. Changing `--c-tertiary`
 re-accents the whole site; changing `--font-display` re-voices it. Components
