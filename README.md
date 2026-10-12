@@ -24,7 +24,8 @@ and images that any static host will serve.
 | Path | What it is |
 | --- | --- |
 | `content/site.json` | **Every word on the site.** Projects, services, timeline, people, clients. |
-| `assets/css/tokens.css` | The design system: colour, type, spacing, radius, motion. |
+| `DESIGN.md` | The Framer design system, installed by `npx getdesign@latest add framer`. Left as shipped. |
+| `assets/css/tokens.css` | That system as CSS custom properties: colour, type, spacing, radius, elevation, motion. |
 | `assets/css/site.css` | Components, built only from those tokens. |
 | `assets/js/site.js` | Progressive enhancement — header state, menu, reveals, work filter. |
 | `assets/img/projects/` | Project photography, two widths each (`-card` 900px, full 1800px). |
@@ -51,6 +52,11 @@ the search index. No code change.
 **Look and feel** — edit `assets/css/tokens.css`. Changing `--c-tertiary`
 re-accents the whole site; changing `--font-display` re-voices it. Components
 never hard-code a value, so the tokens are the only place to change.
+
+The system is the Framer one in `DESIGN.md`, with a single substitution:
+the accent is JCI's own `#D42127` in place of Framer's `#0099ff`, and the
+gradient spotlight cards are not implemented. `docs/design-system.md` gives
+the reasoning and records what is followed to the number.
 
 **Structure** — page composition lives in `scripts/build.py`, one function per
 page type (`page_home`, `page_project`, `page_sector`, …).

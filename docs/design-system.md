@@ -1,115 +1,165 @@
-# Design system — how Cuub Studio was applied to JCI
+# Design system — Framer, with JCI's red
 
-The supplied `cuubstudio.com-design.md` describes a stark editorial system:
-dark canvas, oversized white type, a single vivid accent, flat surfaces, no
-shadows, photography carrying the emotion. That system is implemented here
-almost verbatim in `assets/css/tokens.css`. This note records the four places
-it was adapted, and why.
+The site is built on the Framer design system in `/DESIGN.md`, installed
+with `npx getdesign@latest add framer`. `assets/css/tokens.css` is that
+document expressed as CSS custom properties; `assets/css/site.css` builds
+every component from those tokens and hard-codes nothing.
+
+One substitution, and one omission. Both are deliberate and both are below.
 
 ---
 
-## 1. The accent is JCI's red, not Cuub's
+## The substitution: #D42127 in place of #0099ff
 
-| | Cuub | Here |
+`DESIGN.md` specifies a single chromatic accent, sky blue `#0099ff`,
+reserved for hyperlinks, focus rings and selected indicators, and forbidden
+as a surface or button fill.
+
+That rule is kept exactly. The colour is not: the accent here is
+**`#D42127`**, sampled from the James Cubitt Interiors logo mark. `#0099ff`
+is Framer's brand, and a practice's site should carry its own.
+
+The discipline is unchanged — one accent, never two. The red appears on:
+
+- link hover and the rule under `.btn-link`
+- the focus ring (`--e-ring`, the level-3 signal)
+- the border on a selected filter chip and the current carousel dot
+- the current nav item on mobile
+
+It does **not** appear on section eyebrows, which `DESIGN.md` would treat as
+decorative. Those are `ink-muted`. This is a real change from the previous
+build, where the red marked every section label; under Framer's rules the
+accent is a signal, not an ornament.
+
+`--c-tertiary-deep` (`#9E1B22`, the deeper red from the printed brochures)
+is kept for pressed states.
+
+## The omission: gradient spotlight cards
+
+`DESIGN.md` calls the magenta / violet / orange / coral spotlight cards the
+brand's signature atmosphere device. They are not implemented.
+
+They exist on framer.com to show what Framer produces — they *are* the
+product demo. JCI has ninety photographs of finished interiors doing that
+job, and Framer's own rule is that the palette must not carry a second
+chromatic family beyond the one accent. Dropping four saturated hues onto
+an interior-architecture portfolio would fight the photography it exists to
+show.
+
+Where Framer would place a spotlight card, this site places a full-bleed
+photograph instead.
+
+---
+
+## What is followed exactly
+
+### Colour
+
+| Token | Value | Role |
 | --- | --- | --- |
-| Accent | `#FF4438` | `#D42127` |
+| `--c-neutral` | `#090909` | canvas — hero, body, footer, every band |
+| `--c-surface` | `#141414` | surface-1: cards, secondary pills, tiles |
+| `--c-surface-2` | `#1C1C1C` | surface-2: selected chips, featured cards |
+| `--c-border` | `#262626` | hairline |
+| `--c-border-soft` | `#1A1A1A` | hairline-soft |
+| `--c-on-surface` | `#FFFFFF` | ink |
+| `--c-secondary` | `#999999` | ink-muted — the only secondary tone |
 
-`#D42127` is sampled directly from the James Cubitt Interiors logo mark on the
-back page of the hospitality brochure. `#9E1B22` — the deeper red used for the
-page furniture throughout the printed brochures — is kept as
-`--c-tertiary-deep` for hover and pressed states.
+Hierarchy on the dark canvas is carried by surface lift and by the binary
+ink → ink-muted contrast, never by opacity on white type.
 
-Everything else in the Cuub palette is unchanged: `#FFFFFF` primary,
-`#B3B3B3` secondary, `#000000` canvas, `#111111` surface, `#374151` border,
-and errors reusing the accent rather than introducing a warning hue.
+### Type
 
-The accent stays rare, as the system asks. It appears on section labels, the
-small rule before them, link and card underlines on hover, the active filter
-chip, and the timeline year on hover. It is never a large fill.
+GT Walsheim is not web-licensable. `DESIGN.md` names Mona Sans, Geist or
+Inter 600–700 as substitutes; **Mona Sans** is used, which the document
+calls the closest, and which is open source and served by Google Fonts.
+Body is **Inter**.
 
-## 2. Two web-licensed typefaces stand in
-
-TT Firs Neue is not available for web licensing, and Helvetica Neue is not
-installed on most non-Apple devices. The substitutes:
-
-| Role | Cuub | Here | Why |
-| --- | --- | --- | --- |
-| Display | TT Firs Neue | **Archivo** | A grotesque of the same density and geometry; holds up at 104px |
-| UI / body | Helvetica Neue | **Helvetica Neue → Inter** | Native where it exists, Inter elsewhere |
-
-Every size, weight, line-height and letter-spacing token from the source
-system is kept exactly: `headline-display` 70/77/600, `body-lg` 18/28,
-`label-sm` 12/16/600 at `0.08em`, and the rest.
-
-If the practice licenses TT Firs Neue, swap `--font-display` in
-`tokens.css` and self-host the files. Nothing else changes.
-
-## 3. Two fluid sizes extend the scale, they do not replace it
-
-The source system specifies a fixed 70px display size. A fixed 70px headline
-overflows a 390px phone. Two clamped tokens were added alongside the fixed
-one, which is still there and still used:
+The tracking is the brand signature and is followed to the number. Framer's
+px values are exactly −5% of size at every display step (−5.5/110,
+−4.25/85, −3.1/62), so it is set in `em` and survives the responsive ramp:
 
 ```css
---fs-hero:    clamp(40px, 7.4vw, 104px);   /* full-bleed hero statements */
---fs-section: clamp(30px, 4.6vw, 70px);    /* section heads — tops out at the 70px token */
+--ls-display: -0.05em;
+--fs-display-xxl: clamp(32px, 7.8vw, 110px);  /* 110 → ~62 at 810 → 32 floor */
 ```
 
-`--fs-section` reaches exactly the specified 70px at desktop width and shrinks
-below it; it never exceeds the system. `--fs-hero` goes above 70px only in the
-full-bleed hero, which is the "oversized hero statement" the system asks for.
+Measured in the browser at desktop width: display renders at `110px /
+93.5px / -5.5px`, body at `15px / 19.5px / -0.15px`. Both match the
+document exactly.
 
-Section rhythm is clamped the same way: `--s-section: clamp(46px, 11vw, 148px)`
-reaches the specified `xl` break on desktop and falls back to `lg` on a phone.
-The raw `xs/sm/md/lg/xl` tokens (6/18/30/46/148) are unchanged.
+Inter's character variants are set globally, because `DESIGN.md` is
+explicit that the brand depends on them:
 
-## 4. Dark is not a preference
+```css
+--font-features: "cv01", "cv05", "cv09", "cv11", "ss03", "ss07", "dlig";
+```
 
-The system says: *"Do keep the canvas dark and let white typography carry most
-of the hierarchy."* So the site does not follow `prefers-color-scheme`. A
-light JCI would be a different brand.
+`tnum` is added on tabular contexts only — the stats row and the timeline
+years.
 
-A light palette is kept in `tokens.css` behind `html[data-theme="light"]` as
-an opt-in, for a future surface that genuinely needs one. Nothing in the site
-sets it.
+Four display tiers, each used for what the document assigns it:
+`display-xxl` for hero statements, `display-xl` for section openers,
+`display-lg` for pull quotes and standfirsts, `display-md` for stats,
+timeline years, contact lines and the footer promise.
+
+### Shape
+
+Every text CTA is a pill (`--r-pill`, 100px) with 10px/15px padding and a
+44px minimum tap height. Icon buttons are full circles at 40px. Cards are
+20px. Nothing is squared off.
+
+This reverses the previous system, which specified 4px buttons and warned
+against over-rounding. Framer's vocabulary wins; the two cannot both hold.
+
+### Depth
+
+| Level | Treatment |
+| --- | --- |
+| 0 | flat — canvas type, rows, footer |
+| 1 | `surface-1` lift — cards, secondary pills |
+| 2 | `--e-2`: `inset 0 0.5px 0 rgba(255,255,255,.10)` + `0 10px 30px rgba(0,0,0,.25)` — cards on hover |
+| 3 | `--e-ring`: the accent at 45% / 15% — focus and selection |
+
+Shadows are now in play, where the previous system had none.
+
+### Spacing
+
+Framer's 5-based scale, not a 4/8 scale: `1 · 4 · 8 · 12 · 15 · 20 · 30 ·
+40 · 96`. Section rhythm is `clamp(56px, 8vw, 96px)`, reaching the
+documented 96px on desktop.
+
+### Dark only
+
+`DESIGN.md`: *"Don't ship a light-mode marketing page."* The site does not
+follow `prefers-color-scheme`. A light palette sits behind
+`html[data-theme="light"]` as an opt-in for a future surface that needs
+one; nothing sets it.
 
 ---
 
-## What was followed without change
+## Lint
 
-- **Flat.** No shadows anywhere. Separation comes from borders
-  (`--c-border-soft` hairlines), contrast, and the photography itself.
-- **Modest radii.** `4px` on buttons, `8px` on cards and images, `9999px` only
-  on filter chips. Everything else is square.
-- **Full-bleed imagery, asymmetric overlays.** Heroes and quote bands run edge
-  to edge; type sits low-left over a gradient scrim rather than centred in a
-  box.
-- **Restrained components.** `button-primary` is white on black at 40px high
-  with `8px 16px` padding; `button-secondary` is a transparent outline;
-  `button-link` is text with a rule under it. Hovers shift tone, never add a
-  shadow or a bounce.
-- **Concise copy over dense paragraphs.** Body text is capped at `62ch`.
+`DESIGN.md`'s iteration guide suggests running its linter:
 
-## Motion
+```
+npx @google/design.md lint DESIGN.md
+```
 
-The source system does not specify motion beyond "keep hover states subtle".
-Three movements were added, all slow and none decorative:
+It reports **0 errors, 7 warnings** — all `orphaned-tokens` on colours the
+template defines but never references from a component (`gradient-coral`,
+`semantic-success` and five others). Those are in the template as shipped;
+`DESIGN.md` is left as installed so it stays diffable against the upstream
+template.
 
-- a 24s scale drift on hero images,
-- a 14px fade-and-rise as sections enter the viewport,
-- a 1.045 scale on card images on hover.
+## Accessibility
 
-All three are removed entirely under `prefers-reduced-motion: reduce`.
-
-## Accessibility notes
-
-- White on black is 21:1. `--c-secondary` (`#B3B3B3`) on black is 9.6:1, well
-  past AA for body text.
-- `--c-tertiary` (`#D42127`) on black is 4.0:1 — enough for the large display
-  type and the non-text marks it is used on, but it is **never** used for body
-  copy or for small text that carries meaning on its own. The active filter
-  chip puts white on the red (4.4:1) rather than red on dark.
-- Focus is a 2px accent outline at 3px offset, never removed.
-- Every image has a written alt description in `content/site.json`; decorative
-  marks are empty-alt.
-- The site is fully navigable and readable with JavaScript off.
+- White on `#090909` is 19.5:1. `ink-muted` `#999999` on canvas is 7.0:1,
+  past AA for body text at every size used.
+- `#D42127` on canvas is 4.3:1. It is never the sole carrier of meaning:
+  a selected chip also lifts to `surface-2`, and focus also draws a ring.
+  It is never used for body copy.
+- Focus is a two-stop ring at 45% and 15%, never removed.
+- Pills hold a 44px minimum tap height at every viewport.
+- Every image has written alt text; the site is navigable with JavaScript
+  off.
