@@ -1,14 +1,18 @@
 # James Cubitt Interiors — website
 
 A static site for James Cubitt Interiors (JCI), the commercial interior
-architecture practice. 114 pages. Dark editorial canvas, oversized white
-type, one red accent, photography doing the emotional work.
+architecture practice. 45 pages. Dark canvas, oversized white type, one red
+accent, photography doing the emotional work.
 
-The information architecture follows the as-built audit of gensler.com
-supplied as the project roadmap — its eight-item navigation, thirteen URL
-templates, ten-block homepage and global chrome, mapped onto a single West
-African practice. `docs/information-architecture.md` records the mapping
-page by page, including the five places it deliberately differs.
+The site is services-led, following the supplied homepage flow diagram:
+HERO / POSITIONING → TRUST / CLIENTS → SERVICES. That diagram was cropped
+below the third block, so the blocks after SERVICES are inferred and marked
+as such in `docs/information-architecture.md`, which also records what the
+previous gensler.com-based structure contained and where each of its URLs
+now goes.
+
+The earlier 114-page build is recoverable at the git tag
+`gensler-architecture`.
 
 ```
 python3 scripts/serve.py        # build + serve on http://127.0.0.1:8000
@@ -29,6 +33,7 @@ and images that any static host will serve.
 | `assets/css/site.css` | Components, built only from those tokens. |
 | `assets/js/site.js` | Progressive enhancement — header state, menu, reveals, work filter. |
 | `assets/img/projects/` | Project photography, two widths each (`-card` 900px, full 1800px). |
+| `assets/img/clients/` | 20 client marks for the trust band, white-on-transparent. |
 | `assets/video/` | The practice film (WebM + MP4) and its poster frame. |
 | `templates/base.html` | The page shell: head, header, footer. |
 | `scripts/build.py` | Renders `content/site.json` into `dist/`. |

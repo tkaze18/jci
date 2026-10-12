@@ -13,35 +13,20 @@
   },
   "nav": [
     {
-      "label": "Research & Insights",
-      "href": "/gri/",
-      "mega": "gri"
+      "label": "Services",
+      "href": "/services/"
     },
     {
-      "label": "Expertise",
-      "href": "/expertise/",
-      "mega": "expertise"
+      "label": "Sectors",
+      "href": "/sectors/"
     },
     {
-      "label": "Projects",
-      "href": "/projects/"
-    },
-    {
-      "label": "People",
-      "href": "/people/"
-    },
-    {
-      "label": "Offices",
-      "href": "/offices/",
-      "mega": "offices"
+      "label": "Work",
+      "href": "/work/"
     },
     {
       "label": "About",
       "href": "/about/"
-    },
-    {
-      "label": "Careers",
-      "href": "/careers/"
     },
     {
       "label": "Contact",
@@ -60,7 +45,23 @@
       "We believe that intelligently crafted spaces create memories and experiences, and inspire people. Inspiration in turn births innovation, and then value."
     ],
     "quote": "The building where we live, work, learn and relax profoundly impacts our health, well-being, and productivity.",
-    "statement": "We are not just designers. We are innovators, crafts people and thinkers."
+    "statement": "We are not just designers. We are innovators, crafts people and thinkers.",
+    "positioning": "James Cubitt Interiors designs and builds commercial interiors across West Africa — workplaces, hotels, stores and homes, from the strategy behind them to the day the client gets the keys.",
+    "proof": [
+      "Founded in London in 1947, in West Africa since 1950",
+      "Over fifty interiors delivered across five countries",
+      "Head offices for Access Bank, MTN, Guinness, Afreximbank and Coca-Cola"
+    ],
+    "ctaPrimary": {
+      "label": "Start a project",
+      "href": "/contact/"
+    },
+    "ctaSecondary": {
+      "label": "See the work",
+      "href": "/work/"
+    },
+    "trustHeading": "Fifty interiors for the companies on this wall.",
+    "trustNote": "Clients from the practice's capability statement."
   },
   "film": {
     "eyebrow": "Film",
@@ -2026,64 +2027,44 @@
   "footer": {
     "columns": [
       {
+        "heading": "Services",
+        "links": [
+          {
+            "label": "Strategy",
+            "href": "/services/strategy/"
+          },
+          {
+            "label": "Design",
+            "href": "/services/design/"
+          },
+          {
+            "label": "Construction",
+            "href": "/services/construction/"
+          },
+          {
+            "label": "All services",
+            "href": "/services/"
+          }
+        ]
+      },
+      {
         "heading": "Explore",
         "links": [
           {
-            "label": "Research & Insights",
-            "href": "/gri/"
+            "label": "Sectors",
+            "href": "/sectors/"
           },
           {
-            "label": "Expertise",
-            "href": "/expertise/"
-          },
-          {
-            "label": "Projects",
-            "href": "/projects/"
-          },
-          {
-            "label": "People",
-            "href": "/people/"
-          },
-          {
-            "label": "Offices",
-            "href": "/offices/"
+            "label": "Work",
+            "href": "/work/"
           },
           {
             "label": "About",
             "href": "/about/"
           },
           {
-            "label": "Careers",
-            "href": "/careers/"
-          }
-        ]
-      },
-      {
-        "heading": "The practice",
-        "links": [
-          {
             "label": "Contact",
             "href": "/contact/"
-          },
-          {
-            "label": "Fact Sheet",
-            "href": "/doc/jci-fact-sheet/"
-          },
-          {
-            "label": "Guiding Principles",
-            "href": "/about/#principles"
-          },
-          {
-            "label": "Inclusion",
-            "href": "/about/inclusion/"
-          },
-          {
-            "label": "Ethics & Compliance",
-            "href": "/ethics-compliance/"
-          },
-          {
-            "label": "Resilience",
-            "href": "/research-topic-sustainability/"
           }
         ]
       }
@@ -2092,14 +2073,6 @@
       {
         "label": "Privacy",
         "href": "/privacy/"
-      },
-      {
-        "label": "Cookie Preferences",
-        "href": "/privacy/#cookies"
-      },
-      {
-        "label": "Transparency Statement",
-        "href": "/transparency-statement/"
       }
     ],
     "social": [
@@ -2117,5 +2090,204 @@
       "body": "Research notes and new work, a few times a year.",
       "cta": "Subscribe by email"
     }
-  }
+  },
+  "pillars": [
+    {
+      "slug": "strategy",
+      "name": "Strategy",
+      "lede": "Work out what the space has to do before anyone draws it.",
+      "body": [
+        "Most briefs arrive as a floor area and a headcount. We start earlier than that: what the organisation actually does in a day, which of it needs a room, and what standard it wants to hold itself to.",
+        "This is where the expensive mistakes get caught — the meeting rooms nobody books, the desks nobody sits at, the lighting that fails a wellness audit two years in."
+      ],
+      "services": [
+        "workplace-strategy",
+        "wellness-assessment",
+        "design-intelligence"
+      ],
+      "image": "nlng-campus-03",
+      "imageAlt": "Café and breakout on the NLNG campus, Port Harcourt",
+      "detail": [
+        {
+          "name": "Workplace Strategy",
+          "lede": "Space assessment, space programming, space standard advisory.",
+          "body": "Before anyone draws a plan, we establish what the space has to do — how many people, what kinds of work, which standards the organisation wants to hold itself to."
+        },
+        {
+          "name": "Wellness Assessment & Correction",
+          "lede": "Assessment against wellness and sustainability metrics, with corrections.",
+          "body": "We assess the current and future interior environment to ensure its alignment with best practices and industry metrics for wellness and sustainability, identifying where it falls short and proffering appropriate corrections."
+        },
+        {
+          "name": "Design Intelligence",
+          "lede": "3D visualisation, virtual reality.",
+          "body": "Clients sign off on space, not drawings. We model and walk the scheme before it is committed."
+        }
+      ]
+    },
+    {
+      "slug": "design",
+      "name": "Design",
+      "lede": "Turn that into a building people can use, and want to be in.",
+      "body": [
+        "Research, programming, concept, developed design. The core of the practice and the part the James Cubitt name has been doing since 1947.",
+        "Brand belongs here too: an interior that has to speak carries the wayfinding, the signage and the identity as part of the drawing set, not as a layer added afterwards."
+      ],
+      "services": [
+        "design",
+        "experiential",
+        "lighting"
+      ],
+      "image": "diageo-spirit-01",
+      "imageAlt": "Bar and lounge beneath a dark coffered ceiling at Diageo Spirit, Lagos",
+      "detail": [
+        {
+          "name": "Design",
+          "lede": "Research, programming and conceptualisation, design development.",
+          "body": "The core service. We research how an organisation works, programme the space it needs, and develop that into a design that can be built."
+        },
+        {
+          "name": "Experiential Projects",
+          "lede": "Brand strategy, wayfinding, signage, brand identity guidelines.",
+          "body": "Where the interior has to speak. We translate a brand into the way a building is navigated, named and signed."
+        },
+        {
+          "name": "Lighting Design",
+          "lede": "Scheme, specification and control.",
+          "body": "Lighting carries more of the atmosphere of an interior than any other system, and is the easiest thing to get wrong late."
+        }
+      ]
+    },
+    {
+      "slug": "construction",
+      "name": "Construction",
+      "lede": "Hold the design intent all the way to the day you get the keys.",
+      "body": [
+        "Design management, procurement and fit-out. On most of our projects this is the difference between a scheme and a finished room — the furniture specified, sourced, landed and installed, and the intent defended through every substitution.",
+        "We report honestly on where a project actually is. That is worth more to a client than a reassuring programme."
+      ],
+      "services": [
+        "design-management",
+        "ffe"
+      ],
+      "image": "sterling-bank-01",
+      "imageAlt": "Reception with a curved timber desk at Sterling Bank, Lagos",
+      "detail": [
+        {
+          "name": "Design Management",
+          "lede": "Project monitoring and reporting.",
+          "body": "Holding the design intent through procurement and construction, and reporting honestly on where the project actually is."
+        },
+        {
+          "name": "FFE",
+          "lede": "Sourcing, procurement, installation.",
+          "body": "Furniture, fittings and equipment — specified, sourced, landed and installed. On most of our projects this is the difference between a design and a finished room."
+        }
+      ]
+    }
+  ],
+  "clientLogos": [
+    {
+      "slug": "access-bank",
+      "name": "Access Bank"
+    },
+    {
+      "slug": "mtn",
+      "name": "MTN"
+    },
+    {
+      "slug": "coca-cola",
+      "name": "Coca-Cola"
+    },
+    {
+      "slug": "afreximbank",
+      "name": "Afreximbank"
+    },
+    {
+      "slug": "huawei",
+      "name": "Huawei"
+    },
+    {
+      "slug": "ifc",
+      "name": "IFC"
+    },
+    {
+      "slug": "airtel",
+      "name": "Airtel"
+    },
+    {
+      "slug": "dangote",
+      "name": "Dangote"
+    },
+    {
+      "slug": "interswitch",
+      "name": "Interswitch"
+    },
+    {
+      "slug": "iff",
+      "name": "IFF"
+    },
+    {
+      "slug": "nestle",
+      "name": "Nestlé"
+    },
+    {
+      "slug": "pfizer",
+      "name": "Pfizer"
+    },
+    {
+      "slug": "novartis",
+      "name": "Novartis"
+    },
+    {
+      "slug": "reckitt",
+      "name": "Reckitt"
+    },
+    {
+      "slug": "promasidor",
+      "name": "Promasidor"
+    },
+    {
+      "slug": "nigeria-lng",
+      "name": "Nigeria LNG"
+    },
+    {
+      "slug": "jp-morgan",
+      "name": "J.P. Morgan"
+    },
+    {
+      "slug": "sony-music",
+      "name": "Sony Music"
+    },
+    {
+      "slug": "nbc",
+      "name": "Nigerian Bottling Company"
+    },
+    {
+      "slug": "clickatell",
+      "name": "Clickatell"
+    }
+  ],
+  "process": [
+    {
+      "step": "01",
+      "name": "Assess",
+      "body": "Space assessment and programming. What you have, what you need, and the gap."
+    },
+    {
+      "step": "02",
+      "name": "Design",
+      "body": "Concept through developed design, modelled and walked before it is committed."
+    },
+    {
+      "step": "03",
+      "name": "Specify",
+      "body": "Furniture, fittings and equipment specified and costed against the design intent."
+    },
+    {
+      "step": "04",
+      "name": "Deliver",
+      "body": "Procurement, installation and fit-out, monitored and reported honestly."
+    }
+  ]
 }

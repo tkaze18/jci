@@ -864,6 +864,98 @@ a { color: inherit; text-decoration: none; }
 .footer__legal a:hover { border-bottom-color: var(--c-tertiary); }
 
 /* --------------------------------------------------------------------------
+   Homepage flow: proof list, logo wall, process
+   Blocks 01-03 come from the supplied flow diagram; process is inferred.
+   -------------------------------------------------------------------------- */
+
+/* 01 HERO — the proof points that sit under the positioning line. */
+.prooflist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs) var(--sp-lg);
+  margin-top: var(--sp-lg);
+  max-width: 64ch;
+}
+.prooflist li {
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body-sm);
+  color: rgba(255, 255, 255, .78);
+  position: relative;
+  padding-left: 16px;
+}
+.prooflist li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 7px; height: 1px;
+  background: var(--c-tertiary);
+}
+
+/* 02 TRUST / CLIENTS — the marks sit quiet until hovered, so the wall
+   reads as one texture rather than twenty competing logos. */
+.logowall {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-lg);
+  align-items: center;
+  padding-block: var(--sp-lg);
+  border-block: 1px solid var(--c-border-soft);
+}
+@media (min-width: 620px)  { .logowall { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1040px) { .logowall { grid-template-columns: repeat(5, 1fr); } }
+.logowall li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* A fixed box with object-fit, not a max-height: the marks have wildly
+   different aspect ratios, and capping height alone shrinks the square
+   ones to nothing. */
+.logowall img {
+  height: 46px;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.68;
+  transition: opacity var(--t-mid) var(--ease);
+}
+.logowall li:hover img { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .logowall img { opacity: 0.8; } }
+@media (max-width: 620px) { .logowall img { height: 38px; } }
+
+/* 05 PROCESS — four numbered steps on surface-1 tiles. */
+.process {
+  display: grid;
+  gap: var(--sp-md);
+  grid-template-columns: 1fr;
+  counter-reset: step;
+}
+@media (min-width: 620px)  { .process { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1040px) { .process { grid-template-columns: repeat(4, 1fr); } }
+.process__step {
+  background: var(--c-surface);
+  border-radius: var(--r-xl);
+  padding: var(--sp-lg);
+  display: grid;
+  gap: var(--sp-xs);
+  align-content: start;
+}
+.process__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-md);
+  line-height: 1;
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-display-md);
+  color: var(--c-tertiary);
+  font-feature-settings: var(--font-features), "tnum";
+  margin-bottom: var(--sp-xs);
+}
+
+/* The header CTA, which the services-led nav carries on every page. */
+.header__cta { min-height: 36px; padding: 8px 14px; }
+@media (max-width: 1100px) { .header__cta { display: none; } }
+
+/* --------------------------------------------------------------------------
    Film
    The poster does the work; the overlay is the only ornament, and it is the
    same white-on-black primary control used everywhere else.
