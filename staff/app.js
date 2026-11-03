@@ -1916,6 +1916,52 @@
     $$('[data-bpdel]').forEach(x => x.onclick = async () => { if (!confirm('Remove this payment?')) return; await S.sb.from('bill_payments').delete().eq('id', x.dataset.bpdel); done('Payment removed'); });
   }
 
+  /* ---------- searchable project (and supplier) pickers ---------- */
+  // Any project or supplier dropdown becomes a type-to-search box. The real <select> stays underneath,
+  // so forms, required checks and existing change handlers keep working.
+  const CBX_SEL = 'select[name="project_id"], #tProj, #rProj, #hubPick, select[name="supplier_id"], #exF select[name="project_id"]';
+  const VALUE_DESC = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value');
+  function enhanceSelect(sel){
+    if (sel.dataset.cbx || sel.multiple) return; sel.dataset.cbx = '1';
+    const wrap = document.createElement('div'); wrap.className = 'cbx'; sel.parentNode.insertBefore(wrap, sel); wrap.appendChild(sel);
+    const inp = document.createElement('input'); inp.type = 'text'; inp.className = 'cbx-in'; inp.autocomplete = 'off'; inp.spellcheck = false;
+    inp.setAttribute('role', 'combobox'); inp.setAttribute('aria-expanded', 'false'); inp.setAttribute('aria-label', sel.getAttribute('aria-label') || (sel.closest('label')?.childNodes[0]?.textContent || 'Search').trim());
+    const list = document.createElement('div'); list.className = 'cbx-list'; list.setAttribute('role', 'listbox'); list.hidden = true;
+    wrap.append(inp, list); sel.tabIndex = -1; sel.classList.add('cbx-sel'); inp.disabled = sel.disabled;
+    const opts = () => [...sel.options];
+    const label = () => { const o = sel.selectedOptions[0]; return o && o.value ? o.textContent : ''; };
+    const ph = () => { const o = opts().find(x => !x.value); return o ? o.textContent.replace(/^Select /, 'Search ') + '…' : 'Type to search…'; };
+    const sync = () => { inp.value = label(); inp.placeholder = ph(); };
+    Object.defineProperty(sel, 'value', { configurable: true, get(){ return VALUE_DESC.get.call(this); }, set(v){ VALUE_DESC.set.call(this, v); sync(); } });
+    let hi = 0, shown = [];
+    const draw = q => {
+      const words = q.toLowerCase().split(/\s+/).filter(Boolean);
+      shown = opts().filter(o => !words.length ? true : words.every(w => o.textContent.toLowerCase().includes(w)));
+      hi = Math.max(0, shown.findIndex(o => o.value === sel.value && o.value)); if (words.length) hi = shown[0] && !shown[0].value && shown.length > 1 ? 1 : 0;
+      list.innerHTML = shown.length ? shown.slice(0, 200).map((o, i) => { const t = esc(o.textContent), m = t.match(/^([A-Z]{1,2}-?\d{2,4}) · (.*)$/); return `<div class="cbx-o ${i === hi ? 'hi' : ''} ${o.value === sel.value ? 'sel' : ''} ${o.value ? '' : 'none'}" role="option" data-i="${i}">${m ? `<b>${m[1]}</b> ${m[2]}` : t}</div>`; }).join('') + (shown.length > 200 ? `<div class="cbx-more">${shown.length - 200} more · keep typing</div>` : '') : '<div class="cbx-more">No match. Try a Job ID or another word.</div>';
+    };
+    const open = () => { if (inp.disabled) return; draw(inp.value === label() ? '' : inp.value); list.hidden = false; inp.setAttribute('aria-expanded', 'true'); const h = list.querySelector('.hi'); if (h) h.scrollIntoView({ block: 'nearest' }); };
+    const close = () => { list.hidden = true; inp.setAttribute('aria-expanded', 'false'); sync(); };
+    const pick = i => { const o = shown[i]; if (!o) return; VALUE_DESC.set.call(sel, o.value); sync(); close(); sel.dispatchEvent(new Event('input', { bubbles: true })); sel.dispatchEvent(new Event('change', { bubbles: true })); };
+    inp.addEventListener('focus', () => { inp.select(); open(); });
+    inp.addEventListener('click', open);
+    inp.addEventListener('input', () => { draw(inp.value); list.hidden = false; });
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); if (list.hidden) return open(); hi = Math.max(0, Math.min(shown.length - 1, hi + (e.key === 'ArrowDown' ? 1 : -1))); $$('.cbx-o', list).forEach((d, i) => d.classList.toggle('hi', i === hi)); list.querySelector('.hi')?.scrollIntoView({ block: 'nearest' }); }
+      else if (e.key === 'Enter') { if (!list.hidden) { e.preventDefault(); pick(hi); } }
+      else if (e.key === 'Escape') { if (!list.hidden) { e.preventDefault(); e.stopPropagation(); close(); } }
+      else if (e.key === 'Tab') { if (!list.hidden && inp.value && inp.value !== label() && shown.length) pick(hi); else close(); }
+    });
+    list.addEventListener('mousedown', e => e.preventDefault());
+    list.addEventListener('click', e => { const d = e.target.closest('.cbx-o'); if (d) pick(+d.dataset.i); });
+    inp.addEventListener('blur', () => setTimeout(close, 120));
+    sel.addEventListener('change', sync);
+    sel.addEventListener('invalid', () => { inp.classList.add('bad'); setTimeout(() => inp.classList.remove('bad'), 2500); });
+    new MutationObserver(() => { inp.disabled = sel.disabled; sync(); }).observe(sel, { childList: true, attributes: true, attributeFilter: ['disabled'] });
+    sync();
+  }
+  new MutationObserver(() => { document.querySelectorAll(CBX_SEL).forEach(enhanceSelect); }).observe(document.documentElement, { childList: true, subtree: true });
+
   /* ---------- workspace settings (admin) ---------- */
   function renderSettings(){
     const c = S.settings, lastMonthEnd = dkey(new Date(new Date().getFullYear(), new Date().getMonth(), 1)), thisWeek = dkey(startOfWeek(0));
@@ -2033,7 +2079,7 @@
     main(`<div class="head"><div><h1>Projects</h1><p class="sub">Projects your team can track time against, with budgets, estimates and billable rates. Archived projects stay in reports but can’t be selected.</p></div></div>
       <form class="f card" id="pForm"><label>Job ID<input name="job_code" maxlength="20" value="${nextJobCode()}" style="text-transform:uppercase"></label><label class="c2">Project name<input name="name" required maxlength="120" placeholder="e.g. Afreximbank Abuja"></label><label class="c2">Client<input name="client" placeholder="Optional"></label><label>Currency<select name="currency">${curOpts(baseCur())}</select></label><label>Colour<input type="color" name="color" value="${COLORS[S.projects.length % COLORS.length]}" class="swatch" style="width:100%;height:42px"></label><div class="c6" style="display:flex;justify-content:flex-end"><button class="btn">Add project</button></div></form>
       <div class="toolbar" style="margin-top:14px"><div class="seg">${[['active', 'Active'], ['pipeline', 'Pipeline'], ['done', 'Completed and lost'], ['all', 'All']].map(([k, l]) => `<button data-pf="${k}" class="${(S.projFilter || 'active') === k ? 'on' : ''}">${l} <em class="soft">${projList(k).length}</em></button>`).join('')}</div><input id="projQ" type="search" placeholder="Search Job ID, name, lead…" value="${esc(S.projQ || '')}" style="min-width:220px"></div>
-      <div class="card" style="margin-top:10px">${projList(S.projFilter || 'active').length > 120 ? `<p class="sub" style="margin-bottom:8px">Showing 120 of ${projList(S.projFilter || 'active').length} projects. Search to find others.</p>` : ''}${projList(S.projFilter || 'active').length ? projList(S.projFilter || 'active').slice(0, 120).map(p => { const u = usage(p), jb = jobOf(p.id);
+      <div class="card" style="margin-top:10px">${(S.projFilter || 'active') === 'active' && !S.projQ && projList('done').length ? `<p class="sub" style="margin-bottom:8px">${projList('done').length} past projects are in <button class="link" data-pf="done" style="margin:0">Completed and lost</button>. Search finds any project by Job ID or name.</p>` : ''}${projList(S.projFilter || 'active').length > 120 ? `<p class="sub" style="margin-bottom:8px">Showing 120 of ${projList(S.projFilter || 'active').length} projects. Search to find others.</p>` : ''}${projList(S.projFilter || 'active').length ? projList(S.projFilter || 'active').slice(0, 120).map(p => { const u = usage(p), jb = jobOf(p.id);
         const extra = [p.budget_type === 'hours' && p.budget ? bar(u.hours, Number(p.budget), `${Math.round(u.hours)} of ${p.budget} budget hours`) : '', p.budget_type === 'amount' && p.budget ? bar(u.amount / fxOf(pcur(p)), Number(p.budget), `${moneyIn(u.amount / fxOf(pcur(p)), pcur(p))} of ${moneyIn(p.budget, pcur(p))} budget`) : '', p.estimate_hours ? bar(u.hours, Number(p.estimate_hours), `${Math.round(u.hours)} of ${p.estimate_hours} estimated hours`) : ''].join('');
         return `<div class="prow2 ${p.archived ? 'off' : ''} ${S.projFocus === p.id ? 'focus' : ''}" id="pr-${esc(p.id)}"><span class="dot" style="background:${esc(p.color)};width:14px;height:14px"></span><span class="pr-main">${p.job_code ? `<span class="jcode">${esc(p.job_code)}</span>` : ''}<b style="font-weight:500">${esc(p.name)}</b>${p.client ? `<span class="tag"> · ${esc(p.client)}</span>` : ''} ${pStatus(p)}${p.archived ? '<span class="tag"> · Archived</span>' : ''}${jb ? `<button class="link pj-link" data-pjob="${esc(jb.id)}">${p.status === 'pipeline' ? 'Opportunity' : 'From pipeline'}: ${esc(jb.ref || jb.title)} · ${esc(STG[jb.stage].l)}${Number(jb.value) ? ' · ' + moneyIn(jb.value, jb.currency || baseCur()) : ''} ›</button>` : ''}${[p.year, p.project_type, p.scope, p.team_lead ? 'Lead: ' + p.team_lead : ''].filter(Boolean).length ? `<small class="sub pr-reg">${[p.year, p.project_type, p.scope, p.team_lead ? 'Lead: ' + p.team_lead : ''].filter(Boolean).map(esc).join(' · ')}</small>` : ''}<small class="sub">${Math.round(u.hours * 10) / 10} hours logged${p.status === 'pipeline' ? ' on the proposal' : ''}${p.bill_rate != null ? ' · ' + moneyIn(p.bill_rate, pcur(p)) + '/hour' : ''}</small>${extra}</span><span style="display:flex;gap:6px">${can('pm') ? `<button class="btn ghost sm" data-phub="${esc(p.id)}">Hub</button>` : ''}<button class="btn ghost sm" data-pedit="${esc(p.id)}">Edit</button><button class="btn ghost sm" data-arch="${esc(p.id)}">${p.archived ? 'Restore' : 'Archive'}</button></span></div>`; }).join('') : '<p class="empty">Add your first project above.</p>'}</div>`);
     $$('[data-pf]').forEach(b => b.onclick = () => { S.projFilter = b.dataset.pf; S.projFocus = null; renderProjects(); });
