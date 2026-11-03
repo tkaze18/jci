@@ -189,7 +189,7 @@
   }
 
   async function startTimer(){
-    const note = $('#tNote').value.trim(), project_id = $('#tProjValue')?.value || '', category = $('#tCat').value, billable = $('#tBill').checked;
+    const note = $('#tNote').value.trim(), project_id = $('#tProj').value, category = $('#tCat').value, billable = $('#tBill').checked;
     if (!project_id) { $('#tProj').focus(); return toast('Choose a project first'); }
     const row = { user_id: S.me.id, note, project_id, category, billable, started_at: new Date().toISOString(), reminded_at: null, reminder_count: 0 };
     const { error } = await S.sb.from('timers').upsert(row);
@@ -199,7 +199,7 @@
   async function stopTimer(){
     const t = S.timer; if (!t) return;
     const end = Date.now(), start = +new Date(t.started_at);
-    const ok = await saveEntry({ start, end, note: $('#tNote')?.value.trim() ?? t.note, project_id: $('#tProjValue')?.value || t.project_id, category: $('#tCat')?.value || t.category, billable: $('#tBill') ? $('#tBill').checked : t.billable });
+    const ok = await saveEntry({ start, end, note: $('#tNote')?.value.trim() ?? t.note, project_id: $('#tProj')?.value || t.project_id, category: $('#tCat')?.value || t.category, billable: $('#tBill') ? $('#tBill').checked : t.billable });
     await S.sb.from('timers').delete().eq('user_id', S.me.id);
     S.timer = null; if (ok) toast('Time saved: ' + hm((end - start) / 60000));
     await loadMine(); render(true);
@@ -315,42 +315,6 @@
     else if (S.tab === 'recurring') renderRecurring();
   }
   const projOptions = (sel, all) => `<option value="">${all ? 'All projects' : 'Select project'}</option>` + S.projects.filter(p => !p.archived || p.id === sel).map(p => `<option value="${esc(p.id)}"${p.id === sel ? ' selected' : ''}>${p.job_code ? esc(p.job_code) + ' · ' : p.status === 'pipeline' ? 'Proposal · ' : ''}${esc(p.name)}${p.client ? ' · ' + esc(p.client) : ''}</option>`).join('');
-  let projectPickerSeq = 0;
-  const projectLabel = p => `${p.job_code ? p.job_code + ' · ' : ''}${p.name}${p.client ? ' · ' + p.client : ''}`;
-  const setProjectPicker = (input, projectId) => {
-    if (!input) return;
-    const project = S.projects.find(p => p.id === projectId);
-    input.value = project ? projectLabel(project) : '';
-    const hidden = input.parentElement?.querySelector('input[type="hidden"]');
-    if (hidden) hidden.value = projectId || '';
-  };
-  const projPicker = (name, sel = '', { all = false, overheads = false, id = '', required = false } = {}) => {
-    const listId = `project-list-${++projectPickerSeq}`;
-    const selected = S.projects.find(p => p.id === sel);
-    const label = selected ? projectLabel(selected) : all ? 'All projects' : overheads ? 'Overheads (no project)' : '';
-    const options = [];
-    if (all) options.push(['', 'All projects']);
-    if (overheads) options.push(['', 'Overheads (no project)']);
-    S.projects.filter(p => !p.archived || p.id === sel).forEach(p => options.push([p.id, projectLabel(p)]));
-    return `<span style="display:block;width:100%"><input type="text"${id ? ` id="${esc(id)}"` : ''} data-project-picker aria-label="Project" placeholder="Type or choose a project" autocomplete="off" list="${listId}" value="${esc(label)}"${required ? ' required' : ''}><datalist id="${listId}">${options.map(([, text]) => `<option value="${esc(text)}"></option>`).join('')}</datalist><input type="hidden"${id ? ` id="${esc(id)}Value"` : ''} name="${esc(name)}" value="${esc(sel)}"></span>`;
-  };
-  document.addEventListener('input', e => {
-    const input = e.target.closest && e.target.closest('[data-project-picker]');
-    if (!input) return;
-    const wrap = input.parentElement;
-    const hidden = wrap && wrap.querySelector('input[type="hidden"]');
-    if (!hidden) return;
-    const text = input.value.trim().toLowerCase();
-    const options = [...(wrap.querySelector('datalist')?.options || [])];
-    const match = options.find(o => o.value.toLowerCase() === text);
-    hidden.value = match ? (S.projects.find(p => projectLabel(p).toLowerCase() === text)?.id || '') : '';
-    hidden.dispatchEvent(new Event('change', { bubbles: true }));
-    if (hidden.id === 'rProjValue') { S.fProj = hidden.value; renderReportBody(); }
-  });
-  document.addEventListener('change', e => {
-    if (!e.target.matches || !e.target.matches('[data-project-picker]')) return;
-    e.target.parentElement.querySelector('input[type="hidden"]')?.dispatchEvent(new Event('change', { bubbles: true }));
-  });
   const catOptions = sel => CATEGORIES.map(c => `<option${c === sel ? ' selected' : ''}>${c}</option>`).join('');
 
   /* ---------- track ---------- */
@@ -360,7 +324,7 @@
       <div class="card" id="noProj" style="margin-bottom:14px" ${S.projects.length ? 'hidden' : ''}>No projects yet. ${isMgr() ? 'Add your first project in the Projects tab.' : 'Ask a manager to add projects before you track time.'}</div>
       <div class="timer" id="timerBox">
         <input type="text" id="tNote" placeholder="What are you working on?" value="${esc(t.note || '')}" aria-label="Task description" maxlength="500">
-        ${projPicker('project_id', t.project_id || '', { id: 'tProj', required: true })}
+        <select id="tProj" aria-label="Project">${projOptions(t.project_id)}</select>
         <select id="tCat" aria-label="Category">${catOptions(t.category || 'Design')}</select>
         <label class="bill"><input type="checkbox" id="tBill" ${t.billable === false ? '' : 'checked'}>Billable</label>
         <div style="display:flex;align-items:center;gap:12px"><span class="clock" id="clk">00:00:00</span><button class="btn startbtn" id="tBtn">Start</button></div>
@@ -368,7 +332,7 @@
       <details class="manual"><summary>Add time manually</summary>
         <form class="f card" id="manForm">
           <label class="c3">Description<input name="note" maxlength="500" placeholder="e.g. Ground floor layout revisions"></label>
-          <label class="c3">Project${projPicker('project_id', '', { required: true })}</label>
+          <label class="c3">Project<select name="project_id" required>${projOptions('')}</select></label>
           <label class="c2">Date<input type="date" name="date" value="${today}" max="${today}" required></label>
           <label>Start<input type="time" name="from" value="09:00" required></label>
           <label>End<input type="time" name="to" value="10:00" required></label>
@@ -400,7 +364,7 @@
       : `<div class="card empty" style="margin-top:18px">Your tracked time will appear here. Start the timer or add an entry to begin.</div>`;
     $$('[data-edit]').forEach(b => b.onclick = () => openEdit(b.dataset.edit));
     $$('[data-del]').forEach(b => b.onclick = () => deleteEntry(b.dataset.del));
-    $$('[data-again]').forEach(b => b.onclick = () => { const e = S.entries.find(x => x.id === b.dataset.again); if (!e || S.timer) return; $('#tNote').value = e.note; setProjectPicker($('#tProj'), e.project_id); $('#tCat').innerHTML = catOptions(e.category); $('#tBill').checked = e.billable; startTimer(); });
+    $$('[data-again]').forEach(b => b.onclick = () => { const e = S.entries.find(x => x.id === b.dataset.again); if (!e || S.timer) return; $('#tNote').value = e.note; $('#tProj').innerHTML = projOptions(e.project_id); $('#tCat').innerHTML = catOptions(e.category); $('#tBill').checked = e.billable; startTimer(); });
   }
   const entryRow = e => { const p = proj(e.project_id); return `<div class="row"><div class="what"><b>${esc(e.note || e.category || 'Untitled task')}</b><span class="tag"><span class="dot" style="background:${esc(p.color)}"></span>${p.job_code ? `<b class="jc">${esc(p.job_code)}</b> ` : ''}${esc(p.name)}${e.category ? ' · ' + esc(e.category) : ''}${e.billable ? ' · <span style="color:var(--ok)">Billable</span>' : ''}</span></div><span class="span">${tstr(e.started_at)} – ${tstr(e.ended_at)}</span><span class="dur">${hm(e.minutes)}</span><span style="display:flex">${S.timer ? '' : `<button class="icon" data-again="${e.id}" title="Continue this task" aria-label="Continue this task">▶</button>`}${lockReason(e.entry_date) ? `<span class="lockchip" title="${lockReason(e.entry_date)}: this week can’t be edited">${ico('lock')}</span>` : `<button class="icon" data-edit="${e.id}" title="Edit" aria-label="Edit entry">✎</button><button class="icon" data-del="${e.id}" title="Delete" aria-label="Delete entry">×</button>`}</span></div>`; };
   function tick(){
@@ -414,7 +378,7 @@
     const e = S.entries.find(x => x.id === id); if (!e) return;
     $('#editForm').innerHTML = `<h2 class="c6">Edit entry</h2>
       <label class="c6">Description<input name="note" maxlength="500" value="${esc(e.note)}"></label>
-      <label class="c3">Project${projPicker('project_id', e.project_id)}</label>
+      <label class="c3">Project<select name="project_id">${projOptions(e.project_id)}</select></label>
       <label class="c3">Category<select name="category">${catOptions(e.category)}</select></label>
       <label class="c2">Date<input type="date" name="date" value="${e.entry_date}" required></label>
       <label>Start<input type="time" name="from" value="${tstr(e.started_at)}" required></label>
@@ -712,7 +676,7 @@
       <div class="grid g4">${kpi('This month', money(month.reduce((a, x) => a + toBase(x.amount, expCur(x)), 0)), month.length + ' expenses')}${kpi('Waiting for approval', money(S.myExp.filter(x => x.status === 'pending').reduce((a, x) => a + toBase(x.amount, expCur(x)), 0)), S.myExp.filter(x => x.status === 'pending').length + ' expenses')}${kpi('Approved this month', money(month.filter(x => x.status === 'approved').reduce((a, x) => a + toBase(x.amount, expCur(x)), 0)), 'ready to reimburse or bill')}${kpi('Declined', S.myExp.filter(x => x.status === 'rejected').length, 'in the last year')}</div>
       <form class="card f" id="exF" style="margin-top:14px"><h2 class="c6">Add an expense</h2>
         <label class="c2">Date<input type="date" name="spent_on" value="${today}" max="${today}" required></label>
-        <label class="c2">Project${projPicker('project_id', '', { required: true })}</label>
+        <label class="c2">Project<select name="project_id" required>${projOptions('')}</select></label>
         <label class="c2">Category<select name="category">${EXP_CATS.map(c => `<option>${c}</option>`).join('')}</select></label>
         <label>Currency<select name="currency">${curOpts(baseCur())}</select></label><label>Amount<input type="number" name="amount" min="0.01" step="0.01" inputmode="decimal" required placeholder="0.00"></label>
         <label class="c4">What was it for?<input name="note" maxlength="500" required placeholder="e.g. Uber to Afreximbank site meeting"></label>
@@ -867,7 +831,7 @@
     const list = S.plan.filter(x => x.user_id === uid && x.week_start === wk), cap = capacityMins(uid, wk) / 60;
     $('#editForm').innerHTML = `<div class="c6"><h2 style="margin-bottom:2px">${esc(nameOf(uid))}</h2><p class="sub">Week of ${fromKey(wk).toLocaleDateString(undefined, { day: 'numeric', month: 'long' })} · capacity ${Math.round(cap)} hours</p></div>
       <div class="c6">${list.length ? list.map(x => `<div class="aprow"><span class="dot" style="background:${esc(proj(x.project_id).color)};width:12px;height:12px"></span><span class="ap-t"><b>${esc(proj(x.project_id).name)}</b><small>${Number(x.hours)} hours${x.note ? ' · ' + esc(x.note) : ''}</small></span><button type="button" class="btn ghost sm" data-adel="${esc(x.id)}">Remove</button></div>`).join('') : '<p class="sub">Nothing planned yet.</p>'}</div>
-      <label class="c3">Project${projPicker('project_id', '', { required: true })}</label>
+      <label class="c3">Project<select name="project_id" required>${projOptions('')}</select></label>
       <label>Hours<input type="number" name="hours" min="0.5" max="80" step="0.5" value="8" required></label>
       <label class="c2">Repeat for<select name="repeat"><option value="1">This week only</option><option value="2">2 weeks</option><option value="4">4 weeks</option><option value="8">8 weeks</option><option value="12">12 weeks</option></select></label>
       <label class="c6">Note (optional)<input name="note" maxlength="200" placeholder="e.g. Design development drawings"></label>
@@ -924,7 +888,7 @@
   function newInvoice(){
     const today = dkey(new Date()), first = dkey(new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1)), last = dkey(new Date(new Date().getFullYear(), new Date().getMonth(), 0));
     $('#editForm').innerHTML = `<h2 class="c6">New invoice</h2>
-      <label class="c3">Project${projPicker('project_id', '', { overheads: true })}</label>
+      <label class="c3">Project<select name="project_id"><option value="">No project (fixed fee)</option>${S.projects.filter(p => !p.archived).map(p => `<option value="${esc(p.id)}">${esc(p.name)}${p.client ? ' · ' + esc(p.client) : ''}</option>`).join('')}</select></label>
       <label class="c3">Client name<input name="client_name" required maxlength="120"></label>
       <label class="c3">Client email<input type="email" name="client_email" placeholder="accounts@client.com"></label>
       <label class="c3">Client address<input name="client_address" maxlength="300"></label>
@@ -1096,7 +1060,7 @@
     const x = r || { client_name: '', client_email: '', client_address: '', project_id: null, description: 'Monthly design retainer', amount: '', tax_rate: S.settings.tax_rate ?? 7.5, frequency: 'monthly', next_date: dkey(new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1)), end_date: '', auto_send: false };
     $('#editForm').innerHTML = `<h2 class="c6">${r ? 'Edit' : 'New'} recurring invoice</h2>
       <label class="c3">Client name<input name="client_name" required value="${esc(x.client_name)}"></label><label class="c3">Client email<input type="email" name="client_email" value="${esc(x.client_email)}"></label>
-      <label class="c3">Client address<input name="client_address" value="${esc(x.client_address)}"></label><label class="c3">Project (optional)${projPicker('project_id', x.project_id || '', { overheads: true })}</label>
+      <label class="c3">Client address<input name="client_address" value="${esc(x.client_address)}"></label><label class="c3">Project (optional)<select name="project_id"><option value="">None</option>${S.projects.map(p => `<option value="${esc(p.id)}" ${p.id === x.project_id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select></label>
       <label class="c4">Line description<input name="description" required value="${esc(x.description)}"></label><label class="c2">Amount before VAT<input type="number" name="amount" min="1" step="0.01" required value="${x.amount}"></label>
       <label>Currency<select name="currency">${curOpts(x.currency || baseCur())}</select></label><label>Every<select name="frequency">${['monthly', 'quarterly', 'yearly'].map(f => `<option value="${f}" ${f === x.frequency ? 'selected' : ''}>${{ monthly: 'Month', quarterly: 'Quarter', yearly: 'Year' }[f]}</option>`).join('')}</select></label>
       <label class="c2">Next invoice date<input type="date" name="next_date" required value="${x.next_date}"></label><label class="c2">End date (optional)<input type="date" name="end_date" value="${x.end_date || ''}"></label>
@@ -1668,12 +1632,12 @@
     const late = open.filter(t => t.due_date && t.due_date < tToday()).length, nextM = H.miles.find(m => !m.done);
     const stageNow = H.stages.find(s => s.status === 'in_progress');
     main(`<div class="head"><div><h1>Project hub</h1><p class="sub">Stages, milestones and tasks for each project.</p></div>
-      ${projPicker('hub_project', H.pid, { id: 'hubPick' })}</div>
+      <select id="hubPick" class="hub-pick" aria-label="Project">${ps.map(x => `<option value="${esc(x.id)}" ${x.id === H.pid ? 'selected' : ''}>${x.job_code ? esc(x.job_code) + ' · ' : ''}${esc(x.name)}</option>`).join('')}</select></div>
       <div class="grid g4">${kpi('Progress', (H.tasks.length ? Math.round(done / H.tasks.length * 100) : 0) + '%', `${done} of ${H.tasks.length} tasks done`)}${kpi('Current stage', esc(stageNow ? stageNow.name : H.stages.length ? (H.stages.every(s => s.status === 'done') ? 'Complete' : 'Not started') : '–'), H.stages.length + ' stages')}${kpi('Overdue tasks', `<span style="color:${late ? 'var(--red)' : 'inherit'}">${late}</span>`, open.length + ' open')}${kpi('Next milestone', nextM ? fromKey(nextM.due_date).toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) : '–', nextM ? esc(nextM.title) : 'none planned')}</div>
       <div class="toolbar" style="margin-top:14px"><div class="seg">${[['board', 'Board'], ['timeline', 'Timeline'], ['plan', 'Stages and milestones']].map(([k, l]) => `<button data-hv="${k}" class="${S.hubView === k ? 'on' : ''}">${l}</button>`).join('')}</div>
         ${S.hubView === 'board' ? `<select id="hubWho" aria-label="Assignee"><option value="">Everyone</option><option value="me" ${S.hubWho === 'me' ? 'selected' : ''}>My tasks</option>${S.people.filter(x => x.active).map(x => `<option value="${esc(x.id)}" ${S.hubWho === x.id ? 'selected' : ''}>${esc(x.full_name || x.email)}</option>`).join('')}</select><select id="hubStage" aria-label="Stage"><option value="">All stages</option>${H.stages.map(s => `<option value="${esc(s.id)}" ${S.hubStage === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select>` : ''}</div>
       <div id="hubBody"></div>`);
-    $('#hubPickValue').onchange = e => { if (e.target.value) { S.hubPid = e.target.value; S.hubStage = ''; renderHub(); } };
+    $('#hubPick').onchange = e => { S.hubPid = e.target.value; S.hubStage = ''; renderHub(); };
     $$('[data-hv]').forEach(b => b.onclick = () => { S.hubView = b.dataset.hv; renderHub(); });
     if ($('#hubWho')) { $('#hubWho').onchange = e => { S.hubWho = e.target.value; drawBoard(); }; $('#hubStage').onchange = e => { S.hubStage = e.target.value; drawBoard(); }; }
     if (S.hubView === 'board') drawBoard(); else if (S.hubView === 'timeline') drawTimeline(); else drawPlan();
@@ -1895,7 +1859,7 @@
     $('#editForm').innerHTML = `<div class="c6"><h2>${b ? 'Edit bill' : 'New supplier bill'}</h2><p class="sub">${b ? '' : 'Enter the bill as received. It waits for approval before it can be paid.'}</p></div>
       <label class="c3">Supplier<select name="supplier_id" required><option value="">Select supplier</option>${S.suppliers.filter(x => x.active || x.id === v.supplier_id).map(x => `<option value="${esc(x.id)}" ${x.id === v.supplier_id ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select></label>
       <label class="c3">Their invoice number<input name="reference" maxlength="80" value="${esc(v.reference)}"></label>
-      <label class="c3">Project${projPicker('project_id', v.project_id, { overheads: true })}</label>
+      <label class="c3">Project<select name="project_id"><option value="">Overheads (no project)</option>${S.projects.filter(p => !p.archived || p.id === v.project_id).map(p => `<option value="${esc(p.id)}" ${p.id === v.project_id ? 'selected' : ''}>${p.job_code ? esc(p.job_code) + ' · ' : p.status === 'pipeline' ? 'Proposal · ' : ''}${esc(p.name)}</option>`).join('')}</select></label>
       <label class="c3">Category<select name="category">${BILL_CATS.map(c => `<option ${c === v.category ? 'selected' : ''}>${c}</option>`).join('')}</select></label>
       <label class="c6">Description<textarea name="description" rows="2" maxlength="2000" placeholder="What the bill is for">${esc(v.description)}</textarea></label>
       <label class="c2">Bill date<input type="date" name="issue_date" required value="${v.issue_date}"></label>
@@ -2031,13 +1995,13 @@
     main(`<div class="head"><div><h1>Reports</h1><p class="sub">Filter the team’s time and export it as a spreadsheet.</p></div><button class="btn" id="csv">Export CSV</button></div>
       <div class="toolbar"><select id="rRange" aria-label="Date range"><option value="week">This week</option><option value="lastweek">Last week</option><option value="month">This month</option><option value="lastmonth">Last month</option><option value="custom">Custom range</option></select>
         <span id="custom" ${S.range === 'custom' ? '' : 'hidden'}><input type="date" id="rFrom" aria-label="From"> <input type="date" id="rTo" aria-label="To"></span>
-        ${projPicker('project_filter', S.fProj, { all: true, id: 'rProj' })}<select id="rStaff" aria-label="Team member"><option value="">All team members</option></select></div><div id="rBody"></div>`);
+        <select id="rProj" aria-label="Project">${projOptions(S.fProj, true)}</select><select id="rStaff" aria-label="Team member"><option value="">All team members</option></select></div><div id="rBody"></div>`);
     S.people.forEach(p => { const o = document.createElement('option'); o.value = p.id; o.textContent = p.full_name || p.email; if (p.id === S.fStaff) o.selected = true; $('#rStaff').appendChild(o); });
     $('#rRange').value = S.range; const [f, t] = rangeDates(); $('#rFrom').value = S.from || f; $('#rTo').value = S.to || t;
     $('#rRange').onchange = e => { S.range = e.target.value; $('#custom').hidden = S.range !== 'custom'; renderReportBody(); };
     $('#rFrom').onchange = e => { S.from = e.target.value; renderReportBody(); };
     $('#rTo').onchange = e => { S.to = e.target.value; renderReportBody(); };
-    $('#rProjValue').onchange = e => { S.fProj = e.target.value; renderReportBody(); };
+    $('#rProj').onchange = e => { S.fProj = e.target.value; renderReportBody(); };
     $('#rStaff').onchange = e => { S.fStaff = e.target.value; renderReportBody(); };
     $('#csv').onclick = exportCsv; renderReportBody();
   }
